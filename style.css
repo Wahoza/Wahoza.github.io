@@ -11,6 +11,15 @@
     --visit-color-b: rgb(255, 0, 128);
     --visit-gradient: linear-gradient(to right,var(--visit-color-a), var(--visit-color-b));
     --visit-gradient-reversed: linear-gradient(to right,var(--visit-color-b), var(--visit-color-a));
+
+    --color-text-base: black;
+    --color-text-inv: white;
+
+    --color-border-base: black;
+    --color-border-inv: white;
+
+    --color-background-base: white;
+    --color-background-inv: black;
 }
 
 header{
@@ -24,14 +33,14 @@ header{
     gap: 5rem;
     background-color: rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(8px);
-    color: white;
+    color: var(--color-text-inv);
     padding: 0.5rem 1.5rem;
     border-radius: 3rem;
     z-index: 1000;
 }
 
 .logo{
-    color: white;
+    color: var(--color-text-inv);
     font-size: 1.3rem;
     font-weight: 600;
     text-wrap: nowrap;
@@ -49,7 +58,7 @@ header{
 
 li a{
     position: relative;
-    color: white;
+    color: var(--color-text-inv);
     font-weight: 300;
 }
 
@@ -76,7 +85,7 @@ li a:hover::before{
     border: none;
     font-weight: 500;
     font-size: 1rem;
-    color: white;
+    color: var(--color-text-inv);
     cursor: pointer;
     text-wrap: nowrap;
     background: var(--visit-gradient);
@@ -141,7 +150,7 @@ section{
     align-items: center;
     justify-content: center;
     gap: 1.5rem;
-    color: black;
+    color: var(--color-text-base);
 }
 .info-box h3{
     font-size: 1.8rem;
@@ -166,16 +175,18 @@ section{
 .btn{
     border-radius: 3rem;
     padding: 0.5rem 1.5rem;
-    border: 2px solid black;
+    border: 2px solid var(--color-border-base);
     cursor: pointer;
     font-weight: 500;
     text-wrap: nowrap;
     transition: 0.2s ease-in-out;
+    color: var(--color-text-base);
+
 }
 
 .btn:hover{
-    background-color: black;
-    color: white;
+    background-color: var(--color-background-inv);
+    color: var(--color-text-inv);
 }
 
 .socials{
@@ -194,7 +205,7 @@ section{
     fill-rule: nonzero;
 }
 .socials a{
-    color: black;
+    color: var(--color-text-base);
 }
 
 
@@ -209,13 +220,13 @@ section{
     justify-content: center;
     display: block;
 }
-grid{
+.experience-grid{
     display: grid;
-    grid-template-columns: repeat(2,1fr);
     gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100% , max(300px, 50%/ 1.2)), 1fr));
 }
 .grid-card{
-    border: 2px solid black;
+    border: 2px solid var(--color-border-base);
     border-radius: 3rem;
     padding: 3rem;
     display: flex;
@@ -224,11 +235,14 @@ grid{
     justify-content: left;
     cursor: pointer;
     transition: 0.2s ease-in-out;
+    justify-self: center;
+    width: 100%;
+    height: 100%;
 }
 .grid-card:hover{
     transform: scale(1.02);
-    background-color: black;
-    color:white;
+    background-color: var(--color-background-inv);
+    color: var(--color-text-inv);
 }
 .grid-card i{
     font-size: 1.5rem;
@@ -251,4 +265,93 @@ grid{
 ::-webkit-scrollbar-thumb{
     background: linear-gradient(to bottom, var(--visit-color-a), var(--visit-color-b));
     border-radius: 10px;
+}
+
+.projects-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(400px, 1fr));
+    gap: 2rem;
+}
+
+.projects-card{
+    padding: 3rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    justify-content: space-between;
+
+    gap: 1.5rem;
+    border: 2px solid var(--color-border-base);
+    border-radius: 3rem;
+    cursor: pointer;
+
+    background-color: var(--color-background-base);
+    color: var(--color-text-base);
+
+    text-align: start;
+
+    transition: 0.4s ease-in-out;
+}
+.projects-card:hover{
+    transform: translate(-10px)scale(1.02);
+    background-color: var(--color-background-inv);
+    color: var(--color-text-inv);
+}
+.projects-card:hover .btn
+{
+    border: 2px solid var(--color-border-inv);
+    background-color: var(--color-background-inv);
+    color: var(--color-text-inv);
+}
+
+.projects-card:hover .btn:hover
+{
+    border: 2px solid var(--color-border-base);
+    background-color: var(--color-background-base);
+    color: var(--color-text-base);
+}
+
+.projects-card img{
+    align-self: center;
+    width: 60%;
+    border-radius: 1rem;
+}
+
+.projects-card h3{
+    font-size: 2rem;
+    font-weight: 500;
+    align-self: baseline;
+}
+
+.game-tag-grid{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: space-evenly;
+    gap: 0.5rem;
+}
+.projects-card .game-tag-grid{
+    padding: 3rem 0rem;
+
+}
+.projects-card p{
+    flex-grow: 1;
+}
+.game-tag-grid .game-tag
+{
+    padding: 0.5rem 1rem;
+    text-wrap: nowrap;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    gap: 1rem;
+    border: 2px solid var(--color-border-base);
+    
+    border-radius: 1rem;
+}  
+
+.projects-card:hover .game-tag
+{
+    background: var(--visit-gradient);
+    border: 0px solid var(--color-border-base);
 }
