@@ -273,7 +273,6 @@ section{
 .grid-card:hover .experience-tag
 {
     border: 2px solid var(--color-border-inv);
-    padding: 0.6rem 1.1rem;
 }
 ::-webkit-scrollbar{
     width: 15px;
