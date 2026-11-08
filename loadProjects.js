@@ -62,8 +62,8 @@ projArray.push(
     {
         img: 'https://img.itch.zone/aW1nLzE1MzMwODkzLnBuZw==/315x250%23c/%2FzCwI9.png',
         name: 'Flying Frogs', 
-        description: 'Flying Frogs is a local party game about evading other Frogs/Players tongues as a Fly. Catching the Fly will result in the caught player becoming a frog, and the chatching player becoming the fly. Features an AI that can replace player input.', 
-        projectLink: 'https://schlutzkrapfen.itch.io/mmj-2024', 
+        description: 'Flying Frogs is a local party game about evading other Frogs/Players tongues as a Fly. Catching the Fly will result in the caught player becoming a frog, and the catching player becoming the fly. Features an AI that can replace player input.', 
+        projectLink: 'https://store.steampowered.com/app/2998670/Flying_Frogs/', 
         tags: ["GODOT", "C#", "GD script" , "Local PvP", "Party Game", "Player-AI", "GameJam"]
     }
 )
