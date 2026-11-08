@@ -20,6 +20,8 @@
 
     --color-background-base: white;
     --color-background-inv: black;
+
+    --color-background-transparent: rgba(0, 0, 0, 0.7);
 }
 
 header{
@@ -31,7 +33,7 @@ header{
     align-items: center;
     justify-content: center;
     gap: 5rem;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: var(--color-background-transparent);
     backdrop-filter: blur(8px);
     color: var(--color-text-inv);
     padding: 0.5rem 1.5rem;
@@ -255,6 +257,24 @@ section{
     background-clip: text;
     color: transparent;
 }
+
+.experience-tag
+{
+    padding: 0.5rem 1rem;
+    text-wrap: nowrap;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    gap: 1rem;
+    border: 2px solid var(--color-border-base);
+    
+    border-radius: 1rem;
+} 
+.grid-card:hover .experience-tag
+{
+    border: 2px solid var(--color-border-inv);
+    padding: 0.6rem 1.1rem;
+}
 ::-webkit-scrollbar{
     width: 15px;
 }
@@ -357,6 +377,7 @@ section{
     padding: 0.6rem 1.1rem;
 }
 
+
 footer{
     bottom: 0;
     left: 0;
@@ -394,4 +415,73 @@ footer ul li a{
 .contact-grid .btn--contact{
     display: flex;
     justify-self: end;
+}
+
+
+@media(max-width: 1280px){
+    header{
+        padding: 1rem 2rem;
+        gap: 2rem;
+    }
+    .about .about-container{
+        gap: 3rem;
+    }
+}
+
+@media(max-width:768px) {
+    header
+    {
+        gap:1rem;
+        padding: 1rem 1rem;
+    }
+    header .logo
+    {
+        font-size: 1rem;
+    }
+    header .visit-btn
+    {
+        display: none;
+    }
+
+    .about-container{
+        flex-direction: column;
+    }
+
+    .about-container img{
+        width: 70%;
+    }
+}
+
+@media(max-width: 600px){
+    header #menu-icon
+    {
+        display: block;
+    }
+    .nav-links{
+        position: absolute;
+        top: 100%;
+        margin-top: 1rem;
+        width: 100%;
+        padding: 1rem;
+        color: var(--color-text-base);
+        display: none;
+        flex-direction: column;
+        text-align: center;
+        background-color: var(--color-background-transparent);
+        border-radius: 3rem;
+    }
+    .nav-links li{
+        margin-top: 1.5rem;
+        padding: 0.7rem;
+    }
+    header{
+        padding: 1rem 5rem;
+        gap: 8rem;
+    }
+    header .logo{
+        font-size: 1.7rem;
+    }
+    .nav-links.active{
+        display: block;
+    }
 }

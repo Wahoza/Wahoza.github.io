@@ -12,6 +12,8 @@ experienceArray.push(
     {name: 'Technical Artist & Game Developer', duration: '4 months', description: 'Internship at Nightingames as a Technical Artist and Developer', ico: '<i class="fa-solid fa-code"></i>'}
 )
 
+var skillsArray = ['C#', 'C++', 'JS', 'PHP', 'Python', 'Unity', 'Unity ShaderGraph', 'Unreal Engine', 'Blender', 'Scrum & Kanban', 'Version Control']
+
 const experienceSection = document.getElementById('experience-holder');
 
 for(var i = 0; i < experienceArray.length; i++){
@@ -24,3 +26,11 @@ for(var i = 0; i < experienceArray.length; i++){
         '</div class="grid-card">'
     );
 }
+
+var skillsString = '<div class="grid-card"> <i class="fa-regular fa-lightbulb"></i><span>Skills</span> <div class = game-tag-grid>';
+for(var i = 0; i < skillsArray.length; i++)
+{
+    skillsString += '<div class = experience-tag>' + skillsArray[i] + '</div>';
+}
+skillsString += '</div></div>';
+experienceSection.innerHTML += skillsString;
