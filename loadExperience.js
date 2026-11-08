@@ -1,0 +1,26 @@
+var dataArray = [];
+// dataArray.push(
+//     {name: 'Occupation', duration: 'Time', description: 'Description', ico: '<i class="fa-solid fa-code"></i>'}
+// )
+dataArray.push(
+    {name: 'General Education & Abitur', duration: '2014 - 2022', description: 'Completed Abitur at the Landschulheim Marquartstein', ico: '<i class="fa-solid fa-school"></i>'}
+)
+dataArray.push(
+    {name: 'Bachelor Graduate', duration: '2022 - 2206', description: 'Graduate of the FH Salzburg, in MultiMediaTechnology (Computer science)', ico: '<i class="fa-solid fa-book-open"></i>'}
+)
+dataArray.push(
+    {name: 'Technical Artist & Game Developer', duration: '4 months', description: 'Internship at Nightingames as a Technical Artist and Developer', ico: '<i class="fa-solid fa-code"></i>'}
+)
+
+const experienceSection = document.getElementById('experience-holder');
+
+for(var i = 0; i < dataArray.length; i++){
+    experienceSection.innerHTML += (
+        '<div class="grid-card">' +
+        dataArray[i].ico +
+        '<span>' + dataArray[i].name + '</span>' +
+        '<h3>' + dataArray[i].duration + '</h3>' +
+        '<p>' + dataArray[i].description + '</p>' +
+        '</div class="grid-card">'
+    );
+}
