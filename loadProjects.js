@@ -27,7 +27,7 @@ projArray.push(
         img: 'https://img.itch.zone/aW1nLzIzMzU1ODAyLnBuZw==/315x250%23c/m4DZVv.png',
         name: 'Bureaucracy', 
         id: 'bureaucracy-card',
-        description: 'Bureaucracy was made as part of the Truth Lies & Democracy GameJam at the Belvedere. Players must sort ballots and reach quotas in a day.', 
+        description: 'Bureaucracy was made as part of the Truth Lies & Democracy GameJam at the Belvedere. Players must sort ballots and reach quotas in a set time frame.', 
         projectLink: 'https://dreiegg.itch.io/burocracy', 
         tags: ["Unity", "C#" , "Shadergraph", "Blender", "GameJam", "Simulation"]
     }
@@ -61,7 +61,7 @@ projArray.push(
         id: 'yesshopping-card',
         description: 'YESSHOPPING is a typing game where players must type out words in order to sell objects within a small time frame. The more objects are sold, the less time the player is alloted to sell an object.', 
         projectLink: 'https://dreiegg.itch.io/yesshopping', 
-        tags: ["Unity", "C#" , "Shadergraph", "GameJam"]
+        tags: ["Unity", "C#" , "Shadergraph", "Spellchecking", "Typing Game", "GameJam"]
     }
 )
 projArray.push(
@@ -82,7 +82,7 @@ projArray.push(
         description: 'Ocean Paddlers is a local CO-OP game where players must navigate through a rapid river together. Features a handmade level as well as procedural level generation using noise and path creation.', 
         projectLink: 'https://wahoza.itch.io/ocean-paddlers', 
         projectRepo: 'https://github.com/Wahoza/OceanPaddlers',
-        tags: ["SFML", "C++" , "Custom Engine", "Local CO-OP", "MMP"]
+        tags: ["SFML", "C++" , "Custom Engine", "Local CO-OP", "Procedural Generation", "MMP"]
     }
 )
 const projectSection = document.getElementById('projects-grid');
