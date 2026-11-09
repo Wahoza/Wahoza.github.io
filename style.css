@@ -522,6 +522,11 @@ footer ul li a{
 }
 @media(max-width: 400px)
 {
+    header{
+        border-radius: 1.5rem;
+        padding: 0.5rem, 0rem;
+        gap: 0.1rem;
+    }
     .contact-grid
     {
         display: flex;
