@@ -5,6 +5,7 @@ projArray.push(
     {
         img: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4994410/2f432eacce5c2be6f998e69d89e478513314ca41/header.jpg',
         name: 'Train of Thought - Murder on the Silver Line', 
+        id: 'tot-card',
         description: 'Train of Thought – Murder on the Silver Line is a narrative-driven detective mystery game that combines exploration, puzzles and logical deduction into a handcrafted whodunit experience.', 
         projectLink: 'https://store.steampowered.com/app/4994410/Train_of_Thought_Murder_on_the_Silver_Line_ACADEMIC_VERSION/', 
         tags: ["Unity", "C#" , "Shadergraph", "WWISE", "Single-Player" ,"Detective", "Investigation" , "MMP"]
@@ -14,6 +15,7 @@ projArray.push(
     {
         img: 'https://img.itch.zone/aW1nLzMwNDYxMDE2LnBuZw==/315x250%23c/G57BiB.png',
         name: 'Portfolio-Game', 
+        id: 'portfolio-card',
         description: 'A showcase of some projects in a game environment, playable in the browser.', 
         projectLink: 'https://wahoza.itch.io/portfolio', 
         projectRepo: 'https://github.com/Wahoza/Game-Portfolio',
@@ -24,6 +26,7 @@ projArray.push(
     {
         img: 'https://img.itch.zone/aW1nLzIzMzU1ODAyLnBuZw==/315x250%23c/m4DZVv.png',
         name: 'Bureaucracy', 
+        id: 'bureaucracy-card',
         description: 'Bureaucracy was made as part of the Truth Lies & Democracy GameJam at the Belvedere. Players must sort ballots and reach quotas in a day.', 
         projectLink: 'https://dreiegg.itch.io/burocracy', 
         tags: ["Unity", "C#" , "Shadergraph", "Blender", "GameJam", "Simulation"]
@@ -33,6 +36,7 @@ projArray.push(
     {
         img: 'https://img.itch.zone/aW1nLzIzMDE5OTQzLnBuZw==/315x250%23c/d%2FY5jP.png',
         name: 'MoleDown', 
+        id: 'moledown-card',
         description: 'MoleDown is a local PvP game where a generated Island is destroyed over time by the environment and players. Players can burrow, attack and pick up chunks of ground. The last player standing on the island wins.', 
         projectLink: 'https://wahoza.itch.io/moledown', 
         projectRepo: 'https://github.com/Wahoza/MoleDown',
@@ -43,25 +47,28 @@ projArray.push(
     {
         img: 'https://img.itch.zone/aW1nLzIxMzgwNjgyLnBuZw==/315x250%23c/MRUgSl.png',
         name: 'OATS', 
+        id: 'oats-card',
         description: 'OATS is an RTS-Tower-Defense game. Players must upgrade Troops and send them to fend off herds of enemies.', 
         projectLink: 'https://wahoza.itch.io/oats', 
         projectRepo: 'https://github.com/Wahoza/MMP2b_OATS',
         tags: ["Unity", "C#" , "Shadergraph", "Blender", "RTS", "Tower Defense", "MMP"]
     }
 )
-// projArray.push(
-//     {
-//         img: 'https://img.itch.zone/aW1nLzIwMjAxOTY3LnBuZw==/315x250%23c/%2FT6qpX.png',
-//         name: 'YESSHOPPING', 
-//         description: 'YESSHOPPING is a typing game where players must type out words in order to sell objects.', 
-//         projectLink: 'https://dreiegg.itch.io/yesshopping', 
-//         tags: ["Unity", "C#" , "Shadergraph", "GameJam"]
-//     }
-// )
+projArray.push(
+    {
+        img: 'https://img.itch.zone/aW1nLzIwMjAxOTY3LnBuZw==/315x250%23c/%2FT6qpX.png',
+        name: 'YESSHOPPING', 
+        id: 'yesshopping-card',
+        description: 'YESSHOPPING is a typing game where players must type out words in order to sell objects within a small time frame. The more objects are sold, the less time the player is alloted to sell an object.', 
+        projectLink: 'https://dreiegg.itch.io/yesshopping', 
+        tags: ["Unity", "C#" , "Shadergraph", "GameJam"]
+    }
+)
 projArray.push(
     {
         img: 'https://img.itch.zone/aW1nLzE1MzMwODkzLnBuZw==/315x250%23c/%2FzCwI9.png',
         name: 'Flying Frogs', 
+        id: 'ff-card',
         description: 'Flying Frogs is a local party game about evading other Frogs/Players tongues as a Fly. Catching the Fly will result in the caught player becoming a frog, and the catching player becoming the fly. Features an AI that can replace player input.', 
         projectLink: 'https://store.steampowered.com/app/2998670/Flying_Frogs/', 
         tags: ["GODOT", "C#", "GD script" , "Local PvP", "Party Game", "Player-AI", "GameJam"]
@@ -71,6 +78,7 @@ projArray.push(
     {
         img: 'https://img.itch.zone/aW1nLzE1NjEwMzU0LmpwZw==/315x250%23c/yB4chy.jpg',
         name: 'Ocean Paddlers', 
+        id: 'op-card',
         description: 'Ocean Paddlers is a local CO-OP game where players must navigate through a rapid river together. Features a handmade level as well as procedural level generation using noise and path creation.', 
         projectLink: 'https://wahoza.itch.io/ocean-paddlers', 
         projectRepo: 'https://github.com/Wahoza/OceanPaddlers',
@@ -81,7 +89,7 @@ const projectSection = document.getElementById('projects-grid');
 
 for(var i = 0; i < projArray.length; i++){
     var finalStr = (
-        '<div class="projects-card">' +
+        '<div class="projects-card" id = "'+ projArray[i].id + '">' +
         '<h3>' + projArray[i].name + '</h3>' +
         '<img src =' + projArray[i].img + '></img>' +
         '<p>' + projArray[i].description + '</p>'

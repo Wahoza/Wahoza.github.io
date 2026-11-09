@@ -289,6 +289,17 @@ section{
     background-color: var(--color-background-inv);
     color: var(--color-text-inv);
 }
+.grid-card:hover .btn{
+    color: var(--color-text-inv);
+    border-color: var(--color-border-inv);
+}
+.grid-card:hover .btn:hover{
+    color: var(--color-text);
+    background-color: var(--color-background-base);
+}
+.grid-card a{
+    color: var(--color-text-base);
+}
 .grid-card i{
     font-size: 1.5rem;
     margin-bottom: 1rem;
@@ -317,6 +328,23 @@ section{
 {
     border: 2px solid var(--color-border-inv);
 }
+.grid-card--achievement
+{
+    grid-column: span 2;
+}
+.achievement-grid{
+    display: grid;
+    grid-template-columns: fit-content(20%)   1fr fit-content(20%);
+    gap: 1rem;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+    row-gap: 2rem;
+    width: 100%;
+}
+.achievement-grid p{
+    align-self: center;
+}
+
 ::-webkit-scrollbar{
     width: 15px;
 }
@@ -493,6 +521,28 @@ footer ul li a{
     .about-container img{
         width: 70%;
     }
+
+    .projects-grid{
+        grid-template-columns: repeat(1, 100%);
+    }
+    .grid-card--achievement
+    {        
+        grid-column: span 1; 
+    }
+    .achievement-grid
+    {
+        grid-template-columns: repeat(1, 100%);
+        row-gap: 1rem;
+    }
+
+    .achievement-grid > div:nth-child(3n){
+        padding-bottom: 3rem;
+        display: flex;
+    }
+
+    .achievement-grid > div:nth-last-child(1){
+        padding-bottom: 1rem;
+    }
 }
 
 @media(max-width: 600px){
@@ -526,10 +576,6 @@ footer ul li a{
     }
     .nav-links.active{
         display: block;
-    }
-
-    .projects-grid{
-        grid-template-columns: repeat(1, 100%);
     }
 }
 

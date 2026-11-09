@@ -16,6 +16,7 @@ var skillsArray = ['C#', 'C++', 'JS', 'PHP', 'Python', 'Unity', 'Unity ShaderGra
 
 const experienceSection = document.getElementById('experience-holder');
 
+
 for(var i = 0; i < experienceArray.length; i++){
     experienceSection.innerHTML += (
         '<div class="grid-card">' +
@@ -34,3 +35,34 @@ for(var i = 0; i < skillsArray.length; i++)
 }
 skillsString += '</div></div>';
 experienceSection.innerHTML += skillsString;
+
+
+var achievementArray = [];
+achievementArray.push(
+    {name: 'Train of Thought', id: 'tot-card', description: 'Finalist in the subotron pitch competition', awardLink: 'https://subotron.com/'}
+)
+achievementArray.push(
+    {name: 'Bureaucracy', id: 'bureaucracy-card', description: 'Winner of it\'s category at the Truth, Lies & Democracy GameJam at the Belvedere in Vienna', awardLink: 'https://capitalofdemocracy.eu/vienna2025/'}
+)
+achievementArray.push(
+    {name: 'YESSHOPPING', id: 'yesshopping-card', description: 'Winner of the 12th mmarmalade game jam (at rating time)', awardLink: 'https://itch.io/jam/12th-mmarmalade/rate/3383594'}
+)
+achievementArray.push(
+    {name: 'Flying Frogs', id: 'ff-card', description: '3rd in the 12th mmarmalade game jam (at rating time)', awardLink: 'https://itch.io/jam/mmarmelade-game-jam'}
+)
+var rewardString = '<div class="grid-card grid-card--achievement"> <i class="fa-solid fa-award"></i><span>Achievements</span> <div class = achievement-grid>';
+for(var i = 0; i < achievementArray.length; i++){
+    rewardString += (
+        '<div><a href = "#' + achievementArray[i].id + '"> <div class = "btn">' + achievementArray[i].name + '</div></a></div>' +
+        '<p>' + achievementArray[i].description + '</p>'
+    );
+
+    if(achievementArray[i].awardLink)
+    {
+        rewardString += '<div><a href = "' + achievementArray[i].awardLink + '"> <div class = "btn"> more info </div> </a></div>'
+    }else{
+        rewardString += '<div></div>'
+    }
+}
+rewardString += '</div></div>'
+experienceSection.innerHTML += rewardString;
