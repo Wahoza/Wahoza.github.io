@@ -483,4 +483,54 @@ footer ul li a{
     .nav-links.active{
         display: block;
     }
+
+    .projects-grid{
+        grid-template-columns: repeat(1, 100%);
+    }
+}
+
+@media(max-width: 500px)
+{
+    header
+    {
+        gap: 0rem;
+        padding: 0.5rem, 0.5rem;
+    }
+    footer ul
+    {
+        gap: 1rem;
+    }
+    .projects-card .btn-group
+    {
+        flex-direction: column;
+    }
+    .info-box span
+    {
+        text-wrap: wrap;
+    }
+    .socials{
+        gap: 1rem;
+    }
+
+    .section-title{
+        text-align: center;
+        font-size: 3rem;
+        font-weight: 500;
+        margin-bottom: 3rem;
+    }
+
+}
+@media(max-width: 400px)
+{
+    .contact-grid
+    {
+        display: flex;
+        gap: 1rem;
+        flex-direction: column;
+    }
+
+    .footer ul{
+        gap: 0.2rem
+    }
+
 }
