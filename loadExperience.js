@@ -12,7 +12,7 @@ experienceArray.push(
     {name: 'Technical Artist & Game Developer', duration: '4 months', description: 'Internship at Nightingames as a Technical Artist and Developer', ico: '<i class="fa-solid fa-code"></i>'}
 )
 
-var skillsArray = ['C#', 'C++', 'JS', 'PHP', 'Python', 'Unity', 'Unity ShaderGraph', 'Unreal Engine', 'Blender', 'Scrum & Kanban', 'Version Control']
+var skillsArray = ['C#', 'C++', 'JS', 'PHP', 'Python', 'Unity', 'Unity ShaderGraph', 'Unreal Engine', 'Blender', 'Scrum & Kanban', 'Version Control', 'Game Design']
 
 const experienceSection = document.getElementById('experience-holder');
 
@@ -39,16 +39,16 @@ experienceSection.innerHTML += skillsString;
 
 var achievementArray = [];
 achievementArray.push(
-    {name: 'Train of Thought', id: 'tot-card', description: 'Finalist in the subotron pitch competition', awardLink: 'https://subotron.com/'}
+    {name: 'Train of Thought', id: 'tot-card', description: 'Finalist in the Subotron pitch competition (still in progress)', awardLink: 'https://subotron.com/'}
 )
 achievementArray.push(
-    {name: 'Bureaucracy', id: 'bureaucracy-card', description: 'Winner of it\'s category at the Truth, Lies & Democracy GameJam at the Belvedere in Vienna', awardLink: 'https://capitalofdemocracy.eu/vienna2025/'}
+    {name: 'Bureaucracy', id: 'bureaucracy-card', description: 'Winner of it\'s subcategory at the Truth, Lies & Democracy GameJam at the Belvedere in Vienna', awardLink: 'https://capitalofdemocracy.eu/vienna2025/'}
 )
 achievementArray.push(
-    {name: 'YESSHOPPING', id: 'yesshopping-card', description: 'Winner of the 12th mmarmalade game jam (at rating time)', awardLink: 'https://itch.io/jam/12th-mmarmalade/rate/3383594'}
+    {name: 'YESSHOPPING', id: 'yesshopping-card', description: 'Winner of the 12th Mmarmalade GameJam (at time of evaluation)', awardLink: 'https://itch.io/jam/12th-mmarmalade/rate/3383594'}
 )
 achievementArray.push(
-    {name: 'Flying Frogs', id: 'ff-card', description: '3rd in the 12th mmarmalade game jam (at rating time)', awardLink: 'https://itch.io/jam/mmarmelade-game-jam'}
+    {name: 'Flying Frogs', id: 'ff-card', description: '3rd in the 10th Mmarmalade GameJam', awardLink: 'https://itch.io/jam/mmarmelade-game-jam'}
 )
 var rewardString = '<div class="grid-card grid-card--achievement"> <i class="fa-solid fa-award"></i><span>Achievements</span> <div class = achievement-grid>';
 for(var i = 0; i < achievementArray.length; i++){
