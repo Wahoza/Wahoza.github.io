@@ -22,9 +22,12 @@ let float_orbRadius = 20;
 
 let bool_useOrbitControls = false;
 
+
+let arr_circleSections = ['about', 'contact'];
 let string_CircleString = 'circle';
 let string_VerticalScrollString = 'verticalScroll';
 let string_ModeString = string_CircleString;
+let string_CurrentSectionClass = '';
 
 const renderer = new THREE.WebGLRenderer({antialias: true, alpha:false, canvas:backgroundSection})
 renderer.setSize(w,h);
@@ -156,6 +159,60 @@ function onDocumentMouseMove(event){
 
 }
 
+(function (){
+    const sections = document.querySelectorAll("section");
+
+    let topSection = sections[0];
+    let topSectionHeight = sections[0].offsetTop;
+
+    string_CurrentSectionClass = sections[0].className;
+
+    window.addEventListener("load", () => {
+        let scrollTop = window.scrollY;
+        let windowHeight = window.innerHeight;
+        let documentHeight = document.body.offsetHeight;
+
+        topSectionHeight = topSection.offsetTop + topSection.offsetHeight;
+
+
+        sections.forEach( panel => {
+            if(scrollTop <= panel.offsetTop + panel.offsetHeight - windowHeight / 2 ){
+                if(panel.offsetTop + panel.offsetHeight < topSectionHeight - windowHeight / 2){
+                    topSection = panel;
+                    topSectionHeight = topSection.offsetTop + panel.offsetHeight;
+                }
+            }
+
+        });
+
+        string_CurrentSectionClass = topSection.className;
+    });
+
+    window.addEventListener("scroll", () => {
+        let scrollTop = window.scrollY;
+        let windowHeight = window.innerHeight;
+        let documentHeight = document.body.offsetHeight;
+
+        if(scrollTop >= topSectionHeight - windowHeight){
+            topSectionHeight = Number.MAX_VALUE;
+        }else{
+            topSectionHeight = topSection.offsetTop;
+        }
+
+        sections.forEach( panel => {
+            if(scrollTop <= panel.offsetTop + panel.offsetHeight - windowHeight / 2 ){
+                if(panel.offsetTop + panel.offsetHeight < topSectionHeight - windowHeight / 2){
+                    topSection = panel;
+                    topSectionHeight = topSection.offsetTop + panel.offsetHeight;
+                }
+            }
+
+        });
+        
+        string_CurrentSectionClass = topSection.className;
+    });
+
+})();
 let elapsed = 0;
 function update(t = 0){
     requestAnimationFrame(update);

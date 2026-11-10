@@ -355,6 +355,7 @@ section{
 
 ::-webkit-scrollbar{
     width: 15px;
+    background-color: var(--color-background-base);
 }
 ::-webkit-scrollbar-track{
     background-color: rgb(219, 188, 221);
