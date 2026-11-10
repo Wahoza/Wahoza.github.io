@@ -1,8 +1,8 @@
 import * as THREE from "three";
 
 const dotSettings = {
-    distanceAffection : 10.0,
-    avoidanceFactor: 20.0,
+    distanceAffection : 20.0,
+    avoidanceFactor: 30.0,
 }
 
 

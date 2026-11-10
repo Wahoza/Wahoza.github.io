@@ -241,7 +241,10 @@ function update(t = 0){
             outerSphereDots[i].avoidMouse(vec_cursorPos, vec_cursorDir);
 
             if(string_ModeString == string_CircleString) outerSphereDots[i].updateCircle(deltaTime);
+        
         }
+
+                        outerSpherePivots.rotation.y += 0.01 * deltaTime;
     }else
     {
         for(let i = 0; i < outerSphereDots.length; i++){
