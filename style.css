@@ -46,6 +46,12 @@
     background-color: var(--color-background-base);
 }
 
+.background-effects{
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index:0;
+}
 #sun-ico{
     display: none;
 }
@@ -73,7 +79,7 @@ header{
     border-radius: 3rem;
     z-index: 1000;
 }
-header .btn
+.btn
 {
     background-color: var(--color-background-base);
 }
@@ -283,6 +289,7 @@ section{
     justify-self: center;
     width: 100%;
     height: 100%;
+    background-color: var(--color-background-base);
 }
 .grid-card:hover{
     transform: scale(1.02);
@@ -292,6 +299,7 @@ section{
 .grid-card:hover .btn{
     color: var(--color-text-inv);
     border-color: var(--color-border-inv);
+    background-color: var(--color-background-inv);
 }
 .grid-card:hover .btn:hover{
     color: var(--color-text);

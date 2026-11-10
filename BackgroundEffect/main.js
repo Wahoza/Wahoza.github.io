@@ -8,6 +8,8 @@ import { Dot } from '/BackgroundEffect/dotClass.js';
 const w = window.innerWidth;
 const h = window.innerHeight;
 
+const backgroundSection = document.getElementById('background-effects');
+
 let outerSphereDots = [];
 let outerSpherePivots = new THREE.Group();
 
@@ -16,11 +18,16 @@ let color_bottomDot = new THREE.Color( "rgb(255, 0, 128)" );
 
 let float_bloomStrength = 2;
 let float_bloomRadius = 1;
+let float_orbRadius = 20;
 
-const renderer = new THREE.WebGLRenderer({antialias: true, alpha:false})
+let bool_useOrbitControls = false;
+
+let string_CircleString = 'circle';
+let string_VerticalScrollString = 'verticalScroll';
+let string_ModeString = string_CircleString;
+
+const renderer = new THREE.WebGLRenderer({antialias: true, alpha:false, canvas:backgroundSection})
 renderer.setSize(w,h);
-
-document.body.appendChild(renderer.domElement);
 
 const fov = 75;
 const aspect = w/h;
@@ -36,14 +43,13 @@ const color_backgroundDarkMode = new THREE.Color().setHex( 0x000000 );
 const scene = new THREE.Scene({alpha: false, background: color_backgroundLightMode});
 scene.background = color_backgroundLightMode;
 
-const controls = new OrbitControls(camera, renderer.domElement);
-controls.enableDamping = true;
-controls.enableZoom = false;
+if(bool_useOrbitControls){
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.enableZoom = false;
+}
 
-
-
-
-var outerSphere = new THREE.Mesh(new THREE.SphereGeometry(8,32,32), new THREE.MeshBasicMaterial());
+var outerSphere = new THREE.Mesh(new THREE.SphereGeometry(float_orbRadius,32,32), new THREE.MeshBasicMaterial());
 let outerPositionAttribute = outerSphere.geometry.attributes.position;
 
 for(let i = 0; i < outerPositionAttribute.count; i++){
@@ -159,13 +165,14 @@ function update(t = 0){
     elapsed = t;
 
     for(let i = 0; i < outerSphereDots.length; i++){
-          outerSphereDots[i].avoidMouse(vec_cursorPos, vec_cursorDir);
-          outerSphereDots[i].controlMovement(deltaTime);
+        outerSphereDots[i].avoidMouse(vec_cursorPos, vec_cursorDir);
+
+        if(string_ModeString == string_CircleString) outerSphereDots[i].updateCircle(deltaTime);
 
     }
 
-
     composer.render(scene, camera);
-    controls.update();
+
+    if(bool_useOrbitControls) controls.update();
 }
 update();
