@@ -61,14 +61,16 @@ for(let i = 0; i < outerPositionAttribute.count; i++){
      let color_selectedColor = new THREE.Color().lerpColors(color_bottomDot, color_topDot, i / outerPositionAttribute.count);
      const globalPos = vertex.clone().applyMatrix4(outerSphere.matrixWorld);
 
-     let pivot = new THREE.Group();
-     pivot.position.copy(globalPos);
-     let dot = new Dot(10, 0.2, pivot,i,color_selectedColor);
+     let spherePivot = new THREE.Group();
+     spherePivot.position.copy(globalPos);
+     let dot = new Dot(0.2,i,color_selectedColor);
+     dot.setSphereData(10, spherePivot);
+
      outerSphereDots.push(dot);
 
-     pivot.add(dot.mesh);
+     spherePivot.add(dot.mesh);
      dot.mesh.position.copy(new THREE.Vector3());
-     outerSpherePivots.add(pivot); 
+     outerSpherePivots.add(spherePivot); 
 }
 
 scene.add(outerSpherePivots);
@@ -142,6 +144,8 @@ if(darkmode === "active") enabledBackgroundDarkmode(); else disableBackgroundDar
 
 var vec_cursorPos = new THREE.Vector2();
 var vec_cursorDir = new THREE.Vector3();
+camera.getWorldDirection(vec_cursorDir);
+
 document.addEventListener("mousemove", onDocumentMouseMove, false);
 function onDocumentMouseMove(event){
      
@@ -157,6 +161,14 @@ function onDocumentMouseMove(event){
      var distance = - camera.position.z / dir.z;
      vec_cursorPos = camera.position.clone().add( dir.multiplyScalar( distance ) );
 
+}
+
+function determineMode(){
+    string_ModeString = '';
+    for(let i = 0; i < arr_circleSections.length; i++){
+        if (arr_circleSections[i]== string_CurrentSectionClass) { string_ModeString = string_CircleString};
+    } 
+    console.log(string_ModeString)
 }
 
 (function (){
@@ -186,6 +198,7 @@ function onDocumentMouseMove(event){
         });
 
         string_CurrentSectionClass = topSection.className;
+        determineMode();
     });
 
     window.addEventListener("scroll", () => {
@@ -210,6 +223,7 @@ function onDocumentMouseMove(event){
         });
         
         string_CurrentSectionClass = topSection.className;
+        determineMode();
     });
 
 })();
@@ -220,13 +234,23 @@ function update(t = 0){
     let deltaTime = (t - elapsed) / 100;
 
     elapsed = t;
+    
+    if(string_ModeString == string_CircleString)
+    {
+        for(let i = 0; i < outerSphereDots.length; i++){
+            outerSphereDots[i].avoidMouse(vec_cursorPos, vec_cursorDir);
 
-    for(let i = 0; i < outerSphereDots.length; i++){
-        outerSphereDots[i].avoidMouse(vec_cursorPos, vec_cursorDir);
+            if(string_ModeString == string_CircleString) outerSphereDots[i].updateCircle(deltaTime);
+        }
+    }else
+    {
+        for(let i = 0; i < outerSphereDots.length; i++){
+            outerSphereDots[i].avoidMouse(vec_cursorPos, vec_cursorDir);
 
-        if(string_ModeString == string_CircleString) outerSphereDots[i].updateCircle(deltaTime);
-
+            if(string_ModeString == string_CircleString) outerSphereDots[i].updateScrollingVertical(deltaTime);
+        }
     }
+
 
     composer.render(scene, camera);
 
