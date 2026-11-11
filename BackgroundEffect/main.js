@@ -10,8 +10,10 @@ const h = window.innerHeight;
 
 const backgroundSection = document.getElementById('background-effects');
 
-let outerSphereDots = [];
+let outerDots = [];
+let dotPivots = new THREE.Group();
 let outerSpherePivots = new THREE.Group();
+let outerSquarePivots = new THREE.Group();
 
 let color_topDot = new THREE.Color("rgb(152, 255, 105)");
 let color_bottomDot = new THREE.Color( "rgb(255, 0, 128)" );
@@ -19,6 +21,7 @@ let color_bottomDot = new THREE.Color( "rgb(255, 0, 128)" );
 let float_bloomStrength = 2;
 let float_bloomRadius = 1;
 let float_orbRadius = 20;
+let float_orbWidth = 32;
 
 let bool_useOrbitControls = false;
 
@@ -36,9 +39,10 @@ const fov = 75;
 const aspect = w/h;
 const near = 0.1;
 const far = 1000;
+const cameraZ = 55;
 const camera = new THREE.PerspectiveCamera(fov,aspect,near,far);
 
-camera.position.z = 55;
+camera.position.z = cameraZ;
 
 
 const color_backgroundLightMode = new THREE.Color().setHex( 0xffffff );
@@ -52,31 +56,91 @@ if(bool_useOrbitControls){
     controls.enableZoom = false;
 }
 
-var outerSphere = new THREE.Mesh(new THREE.SphereGeometry(float_orbRadius,32,32), new THREE.MeshBasicMaterial());
+var outerSphere = new THREE.Mesh(new THREE.SphereGeometry(float_orbRadius, float_orbWidth, float_orbWidth), new THREE.MeshBasicMaterial());
 let outerPositionAttribute = outerSphere.geometry.attributes.position;
 
 for(let i = 0; i < outerPositionAttribute.count; i++){
      const vertex = new THREE.Vector3();
      vertex.fromBufferAttribute(outerPositionAttribute, i);
-     let color_selectedColor = new THREE.Color().lerpColors(color_bottomDot, color_topDot, i / outerPositionAttribute.count);
      const globalPos = vertex.clone().applyMatrix4(outerSphere.matrixWorld);
+
+     let color_selectedColor = new THREE.Color().lerpColors(color_bottomDot, color_topDot, i / outerPositionAttribute.count);
 
      let spherePivot = new THREE.Group();
      spherePivot.position.copy(globalPos);
-     let dot = new Dot(0.2,i,color_selectedColor);
-     dot.setSphereData(10, spherePivot);
 
-     outerSphereDots.push(dot);
+     let dotPivot = new THREE.Group();
+     dotPivot.position.copy(globalPos);
 
-     spherePivot.add(dot.mesh);
+     let dot = new Dot(0.2,i, dotPivot, color_selectedColor);
+     dot.setSphereData(spherePivot);
+
+     outerDots.push(dot);
+
+     dotPivot.add(dot.mesh);
+
      dot.mesh.position.copy(new THREE.Vector3());
      outerSpherePivots.add(spherePivot); 
+
+     scene.add(dotPivot);
 }
 
 scene.add(outerSpherePivots);
 
 
+function UpdateWindowSquarePivots(){
 
+    scene.remove(outerSquarePivots);
+    outerSquarePivots.clear();
+    let outerSqrtCt = Math.sqrt(outerDots.length);
+    camera.updateMatrixWorld();
+    camera.updateProjectionMatrix();
+    camera.updateMatrix();
+    camera.updateWorldMatrix();
+
+    let target = new THREE.Vector2();
+    camera.getViewSize( cameraZ, target );
+
+    let leftBtm = new THREE.Vector3( -target.x / 2 - 1, -target.y / 2 -1, 0);
+    let leftTop = new THREE.Vector3( -target.x / 2 - 1, target.y / 2 + 1, 0);
+    let rightBtm = new THREE.Vector3( target.x / 2 + 1, -target.y / 2 - 1, 0);
+    let rightTop = new THREE.Vector3( target.x / 2 + 1, target.y / 2 + 1, 0);
+
+    let leftVector = new THREE.Vector3(rightBtm.x - leftBtm.x, rightBtm.y - leftBtm.y, rightBtm.z - leftBtm.z);
+    let leftVectorElementSpacing = new THREE.Vector3(leftVector.x / outerSqrtCt, leftVector.y / outerSqrtCt, leftVector.z / outerSqrtCt);
+
+    let upVector = new THREE.Vector3(leftTop.x - leftBtm.x, leftTop.y - leftBtm.y, leftTop.z - leftBtm.z);
+    let upVectorElementSpacing = new THREE.Vector3(upVector.x / outerSqrtCt,upVector.y / outerSqrtCt,upVector.z / outerSqrtCt);
+
+    for(let i = 0; i < outerDots.length; i++){
+        let modVal = i % outerSqrtCt;
+        let divisionVal = Math.floor(i/outerSqrtCt);
+
+        let btm =  new THREE.Vector3();
+        btm.x = leftVectorElementSpacing.x * modVal;
+        btm.y = leftVectorElementSpacing.y * modVal;
+        btm.z = leftVectorElementSpacing.z * modVal;
+
+
+        let up = new THREE.Vector3();
+
+        up.x = upVectorElementSpacing.x * divisionVal;
+        up.y = upVectorElementSpacing.y * divisionVal;
+        up.z = upVectorElementSpacing.z * divisionVal;
+
+        const globalPos = new THREE.Vector3(btm.x + up.x - rightTop.x, btm.y + up.y - rightTop.y, btm.z + up.z)
+        let squarePivot = new THREE.Group();
+        squarePivot.position.copy(globalPos);
+
+        outerDots[i].setSquareData(squarePivot);
+        //squarePivot.add(outerSphereDots[i].mesh);
+        outerSquarePivots.add(squarePivot);
+    }
+    scene.add(outerSquarePivots);
+}
+
+scene.add(outerSquarePivots);
+UpdateWindowSquarePivots()
 
 var parameters = { minFilter: THREE.LinearFilter, magFilter: THREE.LinearFilter, format: THREE.RGBAFormat, stencilBuffer: false }
 var renderTarget = new THREE.WebGLRenderTarget( w, h, parameters );
@@ -93,6 +157,8 @@ window.addEventListener("resize", onWindowResize,false);
 
 function onWindowResize() {
     UpdateComposer((localStorage.getItem('darkmode') === "active"));
+    UpdateWindowSquarePivots();
+    CheckCurrentSection();
 }
 
 function UpdateComposer(useGlow){
@@ -168,65 +234,56 @@ function determineMode(){
     for(let i = 0; i < arr_circleSections.length; i++){
         if (arr_circleSections[i]== string_CurrentSectionClass) { string_ModeString = string_CircleString};
     } 
-    console.log(string_ModeString)
+}
+
+
+const sections = document.querySelectorAll("section");
+
+let topSection = sections[0];
+let topSectionHeight = sections[0].offsetTop;
+
+string_CurrentSectionClass = sections[0].className;
+
+function CheckCurrentSection(){
+    let scrollTop = window.scrollY;
+    let windowHeight = window.innerHeight;
+    let documentHeight = document.body.offsetHeight;
+
+    if(scrollTop >= topSectionHeight - windowHeight){
+        topSectionHeight = Number.MAX_VALUE;
+    }else{
+        topSectionHeight = topSection.offsetTop;
+    }
+
+    sections.forEach( panel => {
+        if(scrollTop <= panel.offsetTop + panel.offsetHeight - windowHeight / 2 ){
+            if(panel.offsetTop + panel.offsetHeight < topSectionHeight - windowHeight / 2){
+                topSection = panel;
+                topSectionHeight = topSection.offsetTop + panel.offsetHeight;
+            }
+        }
+    });
+    
+    string_CurrentSectionClass = topSection.className;
+    determineMode();
 }
 
 (function (){
-    const sections = document.querySelectorAll("section");
-
-    let topSection = sections[0];
-    let topSectionHeight = sections[0].offsetTop;
-
-    string_CurrentSectionClass = sections[0].className;
-
     window.addEventListener("load", () => {
-        let scrollTop = window.scrollY;
-        let windowHeight = window.innerHeight;
-        let documentHeight = document.body.offsetHeight;
 
-        topSectionHeight = topSection.offsetTop + topSection.offsetHeight;
+        topSection = sections[0];
+        topSectionHeight = sections[0].offsetTop;
 
-
-        sections.forEach( panel => {
-            if(scrollTop <= panel.offsetTop + panel.offsetHeight - windowHeight / 2 ){
-                if(panel.offsetTop + panel.offsetHeight < topSectionHeight - windowHeight / 2){
-                    topSection = panel;
-                    topSectionHeight = topSection.offsetTop + panel.offsetHeight;
-                }
-            }
-
-        });
-
-        string_CurrentSectionClass = topSection.className;
-        determineMode();
+        string_CurrentSectionClass = sections[0].className;
+        CheckCurrentSection();
     });
 
     window.addEventListener("scroll", () => {
-        let scrollTop = window.scrollY;
-        let windowHeight = window.innerHeight;
-        let documentHeight = document.body.offsetHeight;
-
-        if(scrollTop >= topSectionHeight - windowHeight){
-            topSectionHeight = Number.MAX_VALUE;
-        }else{
-            topSectionHeight = topSection.offsetTop;
-        }
-
-        sections.forEach( panel => {
-            if(scrollTop <= panel.offsetTop + panel.offsetHeight - windowHeight / 2 ){
-                if(panel.offsetTop + panel.offsetHeight < topSectionHeight - windowHeight / 2){
-                    topSection = panel;
-                    topSectionHeight = topSection.offsetTop + panel.offsetHeight;
-                }
-            }
-
-        });
-        
-        string_CurrentSectionClass = topSection.className;
-        determineMode();
+        CheckCurrentSection();
     });
 
 })();
+
 let elapsed = 0;
 function update(t = 0){
     requestAnimationFrame(update);
@@ -235,22 +292,26 @@ function update(t = 0){
 
     elapsed = t;
     
+
     if(string_ModeString == string_CircleString)
     {
-        for(let i = 0; i < outerSphereDots.length; i++){
-            outerSphereDots[i].avoidMouse(vec_cursorPos, vec_cursorDir);
+        outerSpherePivots.rotation.y += 0.01 * deltaTime;
+        outerSpherePivots.updateMatrixWorld();
+        outerSpherePivots.updateWorldMatrix();
+        outerSpherePivots.updateMatrix();
 
-            if(string_ModeString == string_CircleString) outerSphereDots[i].updateCircle(deltaTime);
-        
+        for(let i = 0; i < outerDots.length; i++){
+            outerDots[i].avoidMouse(vec_cursorPos, vec_cursorDir);
+            outerDots[i].update(deltaTime);
+            outerDots[i].updateSpherePivots(deltaTime);
         }
-
-                        outerSpherePivots.rotation.y += 0.01 * deltaTime;
-    }else
+    }
+    else
     {
-        for(let i = 0; i < outerSphereDots.length; i++){
-            outerSphereDots[i].avoidMouse(vec_cursorPos, vec_cursorDir);
-
-            if(string_ModeString == string_CircleString) outerSphereDots[i].updateScrollingVertical(deltaTime);
+        for(let i = 0; i < outerDots.length; i++){
+            outerDots[i].avoidMouse(vec_cursorPos, vec_cursorDir);
+            outerDots[i].update(deltaTime);
+            outerDots[i].updateSquarePivots(deltaTime);
         }
     }
 
