@@ -111,6 +111,10 @@ export class Dot{
         let worldPos = new THREE.Vector3(); 
         this.squarePivot.getWorldPosition(worldPos);
         this.mainPivot.position.lerp(worldPos, this.lerpPivotFactor);
+
+        if(this.mainPivot.position == worldPos)
+            this.lerpPivotFactor = 0;
+
         if(this.lerpPivotFactor < 1.0){
             this.lerpPivotFactor += this.lerpPivotSpeed * deltaTime;
                         
