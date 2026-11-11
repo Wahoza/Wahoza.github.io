@@ -23,7 +23,7 @@
 
     --color-background-base: white;
     --color-background-inv: black;
-
+    
     --color-button-white: white;
     --color-background-transparent: rgba(0, 0, 0, 0.7);
 
@@ -32,6 +32,7 @@
 }
 .lightmode{
     background-color: var(--color-background-base);
+    
 }
 .darkmode{
     --color-text-base: white;

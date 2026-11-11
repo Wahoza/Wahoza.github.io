@@ -4,6 +4,7 @@ import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js'
 import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js'; 
 import { RenderPass } from 'three/addons/postprocessing/RenderPass.js'; 
 import { Dot } from '/BackgroundEffect/dotClass.js';
+import { ClassWatcher } from "/BackgroundEffect/ClassWatcher.js";
 
 const w = window.innerWidth;
 const h = window.innerHeight;
@@ -158,7 +159,7 @@ window.addEventListener("resize", onWindowResize,false);
 window.addEventListener("deviceorientation", onWindowResize);
 
 function onWindowResize() {
-    UpdateComposer(!(localStorage.getItem('darkmode') === "false"));
+    UpdateComposer(bodyNode.classList.contains('darkmode'));
     UpdateWindowSquarePivots();
     CheckCurrentSection();
 }
@@ -192,6 +193,8 @@ const themeSwitchBackground = document.getElementById('theme-switch-btn');
 
 let darkmode = localStorage.getItem('darkmode');
 
+let bodyNode = document.querySelector("body");
+
 const enabledBackgroundDarkmode = () => {
     scene.background = color_backgroundDarkMode;
     UpdateComposer(true);
@@ -201,13 +204,9 @@ const disableBackgroundDarkmode = () => {
     scene.background = color_backgroundLightMode;
     UpdateComposer(false);
 } 
-themeSwitchBackground.addEventListener("click", () => {
-    darkmode = localStorage.getItem('darkmode');
+let classWatcher = new ClassWatcher(bodyNode, 'darkmode', enabledBackgroundDarkmode, disableBackgroundDarkmode)
 
-    darkmode !== "active" ? enabledBackgroundDarkmode() : disableBackgroundDarkmode()
-});
-
-if(darkmode === "active") enabledBackgroundDarkmode(); else if(darkmode === "false") disableBackgroundDarkmode(); else enabledBackgroundDarkmode();
+if(bodyNode.classList.contains('darkmode')) enabledBackgroundDarkmode(); else disableBackgroundDarkmode();
 
 
 var vec_cursorPos = new THREE.Vector2();
