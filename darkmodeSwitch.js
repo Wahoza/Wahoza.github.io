@@ -18,7 +18,7 @@ const disableDarkmode = () => {
     localStorage.setItem('darkmode', 'false')
 } 
 
-if(darkmode === "active") enabledDarkmode();
+if(darkmode === "active") {enabledDarkmode();} else if(darkmode === "false") {disableDarkmode();} else {enabledDarkmode();}
 
 window.onload = detectTheme()
 function detectTheme() {
