@@ -155,6 +155,8 @@ glowPass.renderToScreen = true;
 
 window.addEventListener("resize", onWindowResize,false);
 
+window.addEventListener("deviceorientation", onWindowResize);
+
 function onWindowResize() {
     UpdateComposer(!(localStorage.getItem('darkmode') === "false"));
     UpdateWindowSquarePivots();
