@@ -538,6 +538,8 @@ footer ul li a{
 
     .projects-grid{
         grid-template-columns: repeat(1, 100%);
+        width: 100%;
+        padding: 0%;
     }
     .grid-card--achievement
     {        
@@ -590,7 +592,18 @@ footer ul li a{
         transition: opacity 0.3s ease-in-out;
         pointer-events: none;
     }
+        
+    section{
+        min-height: 100vh;
+        padding: 8rem 9%;
+        width: 100%;
+        position: relative;
+    }
 
+    .projects-grid{
+        width: 100%;
+        padding: 0%;
+    }
 
     .nav-links a{
         color: var(--color-text-base);
@@ -622,9 +635,23 @@ footer ul li a{
     {
         gap: 1rem;
     }
+    .projects-grid{
+                grid-template-columns: 100%;
+        width: 100%;
+    }
+    section{
+        min-height: 100vh;
+        padding: 8rem 5%;
+        width: 100%;
+        position: relative;
+    }
     .projects-card .btn-group
     {
         flex-direction: column;
+    }
+    .projects-card
+    {
+        padding: 0rem, 2rem;
     }
     .info-box span
     {
