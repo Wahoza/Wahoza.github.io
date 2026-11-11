@@ -230,10 +230,22 @@ function onDocumentMouseMove(event){
 }
 
 function determineMode(){
-    string_ModeString = '';
+    let prevMode = string_ModeString;
+    string_ModeString = 'square';
     for(let i = 0; i < arr_circleSections.length; i++){
         if (arr_circleSections[i]== string_CurrentSectionClass) { string_ModeString = string_CircleString};
     } 
+
+    if(prevMode != string_ModeString){
+        console.log(string_ModeString);
+        for(let i = 0; i < outerDots.length; i++){
+            outerDots[i].lerpPivotFactor = 0;
+            
+            if(i == 1){
+                console.log(outerDots[i].lerpPivotFactor);
+            }
+        }
+    }
 }
 
 

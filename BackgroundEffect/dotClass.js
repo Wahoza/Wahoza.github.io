@@ -18,7 +18,7 @@ export class Dot{
         this.velocityX = 0;
         this.velocityY = 0;
         this.lerpSpeed = 0.005;
-        this.lerpPivotSpeed = 0.001;
+        this.lerpPivotSpeed = 0.007;
         this.isAvoiding = false;
         this.targetPos = new THREE.Vector3(); 
         this.id = dotId;
@@ -100,6 +100,7 @@ export class Dot{
         let worldPos = new THREE.Vector3(); 
         this.spherePivot.getWorldPosition(worldPos);
         this.mainPivot.position.lerp(worldPos, this.lerpPivotFactor);
+
         if(this.lerpPivotFactor < 1.0){
             this.lerpPivotFactor += this.lerpPivotSpeed * deltaTime;
                         
@@ -111,9 +112,6 @@ export class Dot{
         let worldPos = new THREE.Vector3(); 
         this.squarePivot.getWorldPosition(worldPos);
         this.mainPivot.position.lerp(worldPos, this.lerpPivotFactor);
-
-        if(this.mainPivot.position == worldPos)
-            this.lerpPivotFactor = 0;
 
         if(this.lerpPivotFactor < 1.0){
             this.lerpPivotFactor += this.lerpPivotSpeed * deltaTime;
