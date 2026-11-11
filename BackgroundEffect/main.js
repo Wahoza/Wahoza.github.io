@@ -106,10 +106,10 @@ function UpdateWindowSquarePivots(){
     let rightBtm = new THREE.Vector3( target.x / 2 + 1, -target.y / 2 - 1, 0);
     let rightTop = new THREE.Vector3( target.x / 2 + 1, target.y / 2 + 1, 0);
 
-    let leftVector = new THREE.Vector3(rightBtm.x - leftBtm.x, rightBtm.y - leftBtm.y, rightBtm.z - leftBtm.z);
+    let leftVector = new THREE.Vector3(rightTop.x - leftTop.x, rightTop.y - leftTop.y, rightTop.z - leftTop.z);
     let leftVectorElementSpacing = new THREE.Vector3(leftVector.x / outerSqrtCt, leftVector.y / outerSqrtCt, leftVector.z / outerSqrtCt);
 
-    let upVector = new THREE.Vector3(leftTop.x - leftBtm.x, leftTop.y - leftBtm.y, leftTop.z - leftBtm.z);
+    let upVector = new THREE.Vector3(leftBtm.x - leftTop.x, leftBtm.y - leftTop.y, leftBtm.z - leftTop.z);
     let upVectorElementSpacing = new THREE.Vector3(upVector.x / outerSqrtCt,upVector.y / outerSqrtCt,upVector.z / outerSqrtCt);
 
     for(let i = 0; i < outerDots.length; i++){
@@ -128,7 +128,7 @@ function UpdateWindowSquarePivots(){
         up.y = upVectorElementSpacing.y * divisionVal;
         up.z = upVectorElementSpacing.z * divisionVal;
 
-        const globalPos = new THREE.Vector3(btm.x + up.x - rightTop.x, btm.y + up.y - rightTop.y, btm.z + up.z)
+        const globalPos = new THREE.Vector3(btm.x + up.x - rightBtm.x, btm.y + up.y - rightBtm.y, btm.z + up.z)
         let squarePivot = new THREE.Group();
         squarePivot.position.copy(globalPos);
 
@@ -237,13 +237,8 @@ function determineMode(){
     } 
 
     if(prevMode != string_ModeString){
-        console.log(string_ModeString);
         for(let i = 0; i < outerDots.length; i++){
             outerDots[i].lerpPivotFactor = 0;
-            
-            if(i == 1){
-                console.log(outerDots[i].lerpPivotFactor);
-            }
         }
     }
 }
