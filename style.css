@@ -505,8 +505,8 @@ footer ul li a{
 
 @media(max-width: 1280px){
     header{
-        padding: 1rem 2rem;
-        gap: 2rem;
+        padding: 1rem 1rem;
+        gap: 1rem;
     }
     .about .about-container{
         gap: 3rem;
@@ -516,8 +516,8 @@ footer ul li a{
 @media(max-width:768px) {
     header
     {
-        gap:1rem;
-        padding: 1rem 1rem;
+        gap:3rem;
+        padding: 1rem, 1rem;
     }
     header .logo
     {
@@ -562,34 +562,52 @@ footer ul li a{
 @media(max-width: 600px){
     header #menu-icon
     {
-        display: block;
+    display: block;
+    }
+    header
+    {
+        gap:6rem;
+        padding: 1rem, 1rem;
     }
     .nav-links{
         position: absolute;
+        
         top: 100%;
         margin-top: 1rem;
         width: 100%;
         padding: 1rem;
         color: var(--color-text-base);
-        display: none;
         flex-direction: column;
         text-align: center;
-        background-color: var(--color-background-transparent);
+        background-color: var(--color-background-base);
+        outline: 2px solid var(--color-border-base);
         border-radius: 3rem;
+
+        font-weight: 600;
+        font-weight: 3rem;
+        opacity: 0;
+        z-index: -3;
+        transition: opacity 0.3s ease-in-out;
+        pointer-events: none;
+    }
+
+
+    .nav-links a{
+        color: var(--color-text-base);
     }
     .nav-links li{
         margin-top: 1.5rem;
         padding: 0.7rem;
+        z-index: 100;
     }
-    header{
-        padding: 1rem 5rem;
-        gap: 8rem;
-    }
+
     header .logo{
         font-size: 1.7rem;
     }
+
     .nav-links.active{
-        display: block;
+        opacity: 1;
+        pointer-events: all;
     }
 }
 
@@ -598,7 +616,7 @@ footer ul li a{
     header
     {
         gap: 1rem;
-        padding: 0.5rem, 0.5rem;
+        padding: 1rem, 1rem;
     }
     footer ul
     {
@@ -627,7 +645,6 @@ footer ul li a{
 @media(max-width: 400px)
 {
     header{
-        border-radius: 1.5rem;
         padding: 0.5rem, 0rem;
         gap: 1rem;
     }
