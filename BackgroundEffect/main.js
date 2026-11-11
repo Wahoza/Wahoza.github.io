@@ -156,7 +156,7 @@ glowPass.renderToScreen = true;
 window.addEventListener("resize", onWindowResize,false);
 
 function onWindowResize() {
-    UpdateComposer((localStorage.getItem('darkmode') === "active"));
+    UpdateComposer(!(localStorage.getItem('darkmode') === "false"));
     UpdateWindowSquarePivots();
     CheckCurrentSection();
 }
@@ -205,7 +205,7 @@ themeSwitchBackground.addEventListener("click", () => {
     darkmode !== "active" ? enabledBackgroundDarkmode() : disableBackgroundDarkmode()
 });
 
-if(darkmode === "active") enabledBackgroundDarkmode(); else disableBackgroundDarkmode();
+if(darkmode === "active") enabledBackgroundDarkmode(); else if(darkmode === "false") disableBackgroundDarkmode(); else enabledBackgroundDarkmode();
 
 
 var vec_cursorPos = new THREE.Vector2();
