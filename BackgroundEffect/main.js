@@ -64,7 +64,7 @@ for(let i = 0; i < outerPositionAttribute.count; i++){
      vertex.fromBufferAttribute(outerPositionAttribute, i);
      const globalPos = vertex.clone().applyMatrix4(outerSphere.matrixWorld);
 
-     let color_selectedColor = new THREE.Color().lerpColors(color_bottomDot, color_topDot, i / outerPositionAttribute.count);
+     let color_selectedColor = new THREE.Color().lerpColors(color_topDot,color_bottomDot , i / outerPositionAttribute.count);
 
      let spherePivot = new THREE.Group();
      spherePivot.position.copy(globalPos);
@@ -299,7 +299,6 @@ function update(t = 0){
 
     elapsed = t;
     
-
     if(string_ModeString == string_CircleString)
     {
         outerSpherePivots.rotation.y += 0.01 * deltaTime;

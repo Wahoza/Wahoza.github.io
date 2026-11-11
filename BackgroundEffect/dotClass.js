@@ -3,6 +3,9 @@ import * as THREE from "three";
 const dotSettings = {
     distanceAffection : 10.0,
     avoidanceFactor: 20.0,
+    planeEffector: 0.4,
+    planeDodgeHeightFactor: 5.0,
+    planeDistanceEffector: 2.0
 }
 
 
@@ -12,15 +15,23 @@ export class Dot{
         let dotMaterial = new THREE.MeshBasicMaterial({color: dotColor});
 
         this.mesh = new THREE.Mesh(new THREE.BoxGeometry(size,size,size), dotMaterial);
-        this.isAvoiding = false;
+        this.isAvoidingMouse = false;
+        this.isAvoidingPlane = false;
+        this.lastIsAvoidingPlane = false;
+        this.lastIsAvoidingMouse = false;
+
         this.lerpFactor = 0.0;
         this.lerpPivotFactor = 0.0;
         this.velocityX = 0;
         this.velocityY = 0;
         this.lerpSpeed = 0.005;
         this.lerpPivotSpeed = 0.007;
-        this.isAvoiding = false;
-        this.targetPos = new THREE.Vector3(); 
+        
+        this.mouseDodgeTargetPos = new THREE.Vector3(); 
+        this.planeDodgeTargetPos = new THREE.Vector3();
+
+        this.targetPos = new THREE.Vector3();
+
         this.id = dotId;
         this.mainPivot = pivot;
     }
@@ -68,26 +79,87 @@ export class Dot{
             dir = new THREE.Vector3(dotGlobalPos.x-dodgePos.x, dotGlobalPos.y-dodgePos.y, dotGlobalPos.z-dodgePos.z);
             
             dir.normalize()
-            this.targetPos.x = dir.x * (dotSettings.avoidanceFactor);
-            this.targetPos.y = dir.y * (dotSettings.avoidanceFactor);
-            this.targetPos.z = dir.z * (dotSettings.avoidanceFactor);
+            this.mouseDodgeTargetPos.x = dir.x * (dotSettings.planeDodgeHeightFactor);
+            this.mouseDodgeTargetPos.y = dir.y * (dotSettings.planeDodgeHeightFactor);
+            this.mouseDodgeTargetPos.z = dir.z * (dotSettings.planeDodgeHeightFactor);
 
-            if(!this.isAvoiding){
-                this.lerpFactor = 0.0;
-                this.isAvoiding = true;
+            if(!this.isAvoidingMouse){
+                this.isAvoidingMouse = true;
             }
         }
          
         else{
-            if(this.isAvoiding){
-                this.isAvoiding = false;
-                this.lerpFactor = 0.0;
+            if(this.isAvoidingMouse){
+                this.isAvoidingMouse = false;
             }
-            this.targetPos.copy(new THREE.Vector3());
+            this.mouseDodgeTargetPos.copy(new THREE.Vector3());
         }
     }
 
+    avoidPlane(plane){
+        let dotGlobalPos = new THREE.Vector3();
+
+        let dodgePos = new THREE.Vector3(0,0,0);
+         
+        this.mesh.getWorldPosition(dotGlobalPos);
+
+        plane.projectPoint(dotGlobalPos, dodgePos);
+
+        let distance = dotGlobalPos.distanceTo(dodgePos);
+        if(distance < dotSettings.planeDistanceEffector){
+            let dir = new THREE.Vector3();
+            
+            dir = new THREE.Vector3(dotGlobalPos.x-dodgePos.x, dotGlobalPos.y-dodgePos.y, dotGlobalPos.z-dodgePos.z);
+            
+            dir.normalize()
+
+            this.planeDodgeTargetPos.x = dir.x * (dotSettings.avoidanceFactor);
+            this.planeDodgeTargetPos.y = dir.y * (dotSettings.avoidanceFactor);
+            this.planeDodgeTargetPos.z = dir.z * (dotSettings.avoidanceFactor);
+
+            if(!this.isAvoidingPlane){
+                this.isAvoidingPlane = true;
+            }
+        }
+         
+        else{
+            if(this.isAvoidingPlane){
+                this.isAvoidingPlane = false;
+            }
+            this.planeDodgeTargetPos.copy(new THREE.Vector3());
+        }
+    }
+
+    updateTargetPos(){
+        if(this.lastIsAvoidingMouse != this.isAvoidingMouse)
+            this.lerpFactor = 0.0;
+
+
+        if(this.lastIsAvoidingPlane != this.isAvoidingPlane)
+            this.lerpFactor = 0.0;
+
+        this.lastIsAvoidingMouse = this.isAvoidingMouse;
+        this.lastIsAvoidingPlane = this.isAvoidingPlane;
+
+        if(this.isAvoidingMouse && this.isAvoidingPlane){
+            this.targetPos = this.mouseDodgeTargetPos.lerp(this.planeDodgeTargetPos, dotSettings.planeEffector)
+        }
+        else if(this.isAvoidingMouse){
+            this.targetPos = this.mouseDodgeTargetPos;
+        }
+        else if (this.isAvoidingPlane){
+            this.targetPos = this.planeDodgeTargetPos;
+        }
+        else{
+            this.targetPos.copy(new THREE.Vector3());
+        }
+        
+    }
+
     update(deltaTime){
+
+        this.updateTargetPos();
+
         this.mesh.position.lerp(this.targetPos, this.lerpFactor);
         if(this.lerpFactor < 1.0){
             this.lerpFactor += this.lerpSpeed * deltaTime;
