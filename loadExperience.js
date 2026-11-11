@@ -12,7 +12,7 @@ experienceArray.push(
     {name: 'Technical Artist & Game Developer', duration: '4 months', description: 'Internship at Nightingames as a Technical Artist and Developer', ico: '<i class="fa-solid fa-code"></i>'}
 )
 
-var skillsArray = ['C#', 'C++', 'JS', 'PHP', 'Python', 'Unity', 'Unity ShaderGraph', 'Unreal Engine', 'Blender', 'Scrum & Kanban', 'Version Control', 'Game Design']
+var skillsArray = ['C#', 'C++', 'JS', 'PHP', 'Python', 'OOP', 'Design Patterns', 'Documentation', 'Unity', 'Unity ShaderGraph', 'Unreal Engine', 'Blender', 'Scrum & Kanban', 'Version Control', 'Game Design', 'Teamwork']
 
 const experienceSection = document.getElementById('experience-holder');
 

@@ -6,7 +6,7 @@ projArray.push(
         img: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4994410/2f432eacce5c2be6f998e69d89e478513314ca41/header.jpg',
         name: 'Train of Thought - Murder on the Silver Line', 
         id: 'tot-card',
-        description: 'Train of Thought – Murder on the Silver Line is a narrative-driven detective mystery game that combines exploration, puzzles and logical deduction into a handcrafted whodunit experience.', 
+        description: 'Train of Thought – Murder on the Silver Line is a narrative-driven detective mystery game that combines exploration, puzzles and logical deduction into a handcrafted whodunit experience. Was on display at the Level Up & FH-Werkschau in salzburg and is a finalist in the current Subotron pitch competition.', 
         projectLink: 'https://store.steampowered.com/app/4994410/Train_of_Thought_Murder_on_the_Silver_Line_ACADEMIC_VERSION/', 
         tags: ["Unity", "C#" , "Shadergraph", "WWISE", "Single-Player" ,"Detective", "Investigation" , "MMP"]
     }
@@ -27,7 +27,7 @@ projArray.push(
         img: 'https://img.itch.zone/aW1nLzIzMzU1ODAyLnBuZw==/315x250%23c/m4DZVv.png',
         name: 'Bureaucracy', 
         id: 'bureaucracy-card',
-        description: 'Bureaucracy was made as part of the Truth Lies & Democracy GameJam at the Belvedere. Players must sort ballots and reach quotas in a set time frame.', 
+        description: 'Bureaucracy was made as part of the Truth Lies & Democracy GameJam at the Belvedere. Players must sort ballots and reach quotas in a set time frame. Bureaucracy won the category it was attributed to.', 
         projectLink: 'https://dreiegg.itch.io/burocracy', 
         tags: ["Unity", "C#" , "Shadergraph", "Blender", "GameJam", "Simulation"]
     }
@@ -59,7 +59,7 @@ projArray.push(
         img: 'https://img.itch.zone/aW1nLzIwMjAxOTY3LnBuZw==/315x250%23c/%2FT6qpX.png',
         name: 'YESSHOPPING', 
         id: 'yesshopping-card',
-        description: 'YESSHOPPING is a typing game where players must type out words in order to sell objects within a small time frame. The more objects are sold, the less time the player is alloted to sell an object.', 
+        description: 'YESSHOPPING is a typing game where players must type out words in order to sell objects within a small time frame. The more objects are sold, the less time the player is alloted to sell an object. Made during a Game Jam and won (at time of evaluation), allowing our team to compete in the Truth, Lies & Democracy Game Jam.', 
         projectLink: 'https://dreiegg.itch.io/yesshopping', 
         tags: ["Unity", "C#" , "Shadergraph", "Spellchecking", "Typing Game", "GameJam"]
     }
