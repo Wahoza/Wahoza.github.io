@@ -18,10 +18,8 @@ const disableDarkmode = () => {
     localStorage.setItem('darkmode', 'false')
 } 
 
-if(darkmode === "active") {enabledDarkmode();} else if(darkmode === "false") {disableDarkmode();} else {enabledDarkmode();}
-
-window.onload = detectTheme()
-function detectTheme() {
+if(darkmode === "active") {enabledDarkmode();} else if(darkmode === "false") {disableDarkmode();} 
+else {
     var theme = document.getElementById("theme");
 
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -35,4 +33,6 @@ function detectTheme() {
         enabledDarkmode();
     }
 }
+
+
 
