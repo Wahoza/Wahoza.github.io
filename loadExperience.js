@@ -6,7 +6,7 @@ experienceArray.push(
     {name: 'General Education & Abitur', duration: '2014 - 2022', description: 'Completed Abitur at the Landschulheim Marquartstein', ico: '<i class="fa-solid fa-school"></i>'}
 )
 experienceArray.push(
-    {name: 'Bachelor Graduate (BSc)', duration: '2022 - 2026', description: 'Graduate of the FH Salzburg, in MultiMediaTechnology (Computer science)', ico: '<i class="fa-solid fa-book-open"></i>'}
+    {name: 'Bachelor Graduate (BSc)', duration: '2022 - 2026', description: 'Graduate of the FH Salzburg in the course of studies MultiMediaTechnology (Computer science)', ico: '<i class="fa-solid fa-book-open"></i>'}
 )
 experienceArray.push(
     {name: 'Technical Artist & Game Developer', duration: '4 months', description: 'Internship at Nightingames as a Technical Artist and Developer', ico: '<i class="fa-solid fa-code"></i>'}
@@ -39,13 +39,13 @@ experienceSection.innerHTML += skillsString;
 
 var achievementArray = [];
 achievementArray.push(
-    {name: 'Train of Thought', id: 'tot-card', description: 'Finalist in the Subotron pitch competition (still in progress)', awardLink: 'https://subotron.com/'}
+    {name: 'Train of Thought', id: 'tot-card', description: 'Finalist in the Subotron Pitch Competition (still in progress)', awardLink: 'https://subotron.com/'}
 )
 achievementArray.push(
-    {name: 'Bureaucracy', id: 'bureaucracy-card', description: 'Winner of it\'s subcategory at the Truth, Lies & Democracy GameJam at the Belvedere in Vienna', awardLink: 'https://capitalofdemocracy.eu/vienna2025/'}
+    {name: 'Bureaucracy', id: 'bureaucracy-card', description: 'Winner of its subcategory at the Truth, Lies & Democracy GameJam at the Belvedere in Vienna', awardLink: 'https://capitalofdemocracy.eu/vienna2025/'}
 )
 achievementArray.push(
-    {name: 'YESSHOPPING', id: 'yesshopping-card', description: 'Winner of the 12th Mmarmalade GameJam (at time of evaluation)', awardLink: 'https://itch.io/jam/12th-mmarmalade/rate/3383594'}
+    {name: 'YESSHOPPING', id: 'yesshopping-card', description: 'Winner of the 12th Mmarmalade GameJam (a GameJam hosted within the Fachhochschule Salzburg)', awardLink: 'https://itch.io/jam/12th-mmarmalade/rate/3383594'}
 )
 achievementArray.push(
     {name: 'Flying Frogs', id: 'ff-card', description: '3rd in the 10th Mmarmalade GameJam', awardLink: 'https://itch.io/jam/mmarmelade-game-jam'}

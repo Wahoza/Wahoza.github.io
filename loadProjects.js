@@ -6,7 +6,7 @@ projArray.push(
         img: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4994410/2f432eacce5c2be6f998e69d89e478513314ca41/header.jpg',
         name: 'Train of Thought - Murder on the Silver Line', 
         id: 'tot-card',
-        description: 'Train of Thought – Murder on the Silver Line is a narrative-driven detective mystery game that combines exploration, puzzles and logical deduction into a handcrafted whodunit experience. Was on display at the Level Up & FH-Werkschau in salzburg and is a finalist in the current Subotron pitch competition.', 
+        description: 'Train of Thought – Murder on the Silver Line is a narrative-driven detective mystery game that combines exploration, puzzles and logical deduction into a handcrafted whodunit experience. Was on display at the Level Up & FH-Werkschau in Salzburg and is a finalist in the current Subotron Pitch Competition.', 
         projectLink: 'https://store.steampowered.com/app/4994410/Train_of_Thought_Murder_on_the_Silver_Line_ACADEMIC_VERSION/', 
         tags: ["Unity", "C#" , "Shadergraph", "WWISE", "Single-Player" ,"Detective", "Investigation" , "MMP"]
     }
@@ -27,7 +27,7 @@ projArray.push(
         img: 'https://img.itch.zone/aW1nLzIzMzU1ODAyLnBuZw==/315x250%23c/m4DZVv.png',
         name: 'Bureaucracy', 
         id: 'bureaucracy-card',
-        description: 'Bureaucracy was made as part of the Truth Lies & Democracy GameJam at the Belvedere. Players must sort ballots and reach quotas in a set time frame. Bureaucracy won the category it was attributed to.', 
+        description: 'Bureaucracy was made as part of the Truth, Lies & Democracy GameJam, at the Belvedere in Vienna, Austria. Players must sort ballots and reach quotas in a set time frame. Bureaucracy won its designated category in the GameJam.', 
         projectLink: 'https://dreiegg.itch.io/burocracy', 
         tags: ["Unity", "C#" , "Shadergraph", "Blender", "GameJam", "Simulation"]
     }
@@ -37,7 +37,7 @@ projArray.push(
         img: 'https://img.itch.zone/aW1nLzIzMDE5OTQzLnBuZw==/315x250%23c/d%2FY5jP.png',
         name: 'MoleDown', 
         id: 'moledown-card',
-        description: 'MoleDown is a local PvP game where a generated Island is destroyed over time by the environment and players. Players can burrow, attack and pick up chunks of ground. The last player standing on the island wins.', 
+        description: 'MoleDown is a local PvP game where a generated island is destroyed over time by various hazards and players. Players can burrow, attack and pick up chunks of ground. The last player standing on the island wins.', 
         projectLink: 'https://wahoza.itch.io/moledown', 
         projectRepo: 'https://github.com/Wahoza/MoleDown',
         tags: ["Unity", "C#" , "Shadergraph", "Blender", "Local PvP", "Party Game", "Marching Cubes", "Platformer"]
@@ -48,7 +48,7 @@ projArray.push(
         img: 'https://img.itch.zone/aW1nLzIxMzgwNjgyLnBuZw==/315x250%23c/MRUgSl.png',
         name: 'OATS', 
         id: 'oats-card',
-        description: 'OATS is an RTS-Tower-Defense game. Players must upgrade Troops and send them to fend off herds of enemies.', 
+        description: 'OATS is an RTS-Tower-Defense game. Players must upgrade troops and send them to fend off waves of enemy herds. Features different variations of enemies, troops and an upgrade system for the troops', 
         projectLink: 'https://wahoza.itch.io/oats', 
         projectRepo: 'https://github.com/Wahoza/MMP2b_OATS',
         tags: ["Unity", "C#" , "Shadergraph", "Blender", "RTS", "Tower Defense", "MMP"]
@@ -59,7 +59,7 @@ projArray.push(
         img: 'https://img.itch.zone/aW1nLzIwMjAxOTY3LnBuZw==/315x250%23c/%2FT6qpX.png',
         name: 'YESSHOPPING', 
         id: 'yesshopping-card',
-        description: 'YESSHOPPING is a typing game where players must type out words in order to sell objects within a small time frame. The more objects are sold, the less time the player is alloted to sell an object. Made during a Game Jam and won (at time of evaluation), allowing our team to compete in the Truth, Lies & Democracy Game Jam.', 
+        description: 'YESSHOPPING is a typing game where players must type out words in order to "sell" objects within a small time frame. The more objects are sold, the less time the player is alloted to sell an object. Made during a Game Jam and won (at time of evaluation), allowing our team to compete in the Truth, Lies & Democracy Game Jam.', 
         projectLink: 'https://dreiegg.itch.io/yesshopping', 
         tags: ["Unity", "C#" , "Shadergraph", "Spellchecking", "Typing Game", "GameJam"]
     }
@@ -69,7 +69,7 @@ projArray.push(
         img: 'https://img.itch.zone/aW1nLzE1MzMwODkzLnBuZw==/315x250%23c/%2FzCwI9.png',
         name: 'Flying Frogs', 
         id: 'ff-card',
-        description: 'Flying Frogs is a local party game about evading other Frogs/Players tongues as a Fly. Catching the Fly will result in the caught player becoming a frog, and the catching player becoming the fly. Features an AI that can replace player input.', 
+        description: 'Flying Frogs is a local party game about evading other frogs/players tongues as a fly. Catching the fly will result in the caught player becoming a frog, and the catching player becoming the fly. Also features an AI that can replace player input.', 
         projectLink: 'https://store.steampowered.com/app/2998670/Flying_Frogs/', 
         tags: ["GODOT", "C#", "GD script" , "Local PvP", "Party Game", "Player-AI", "GameJam"]
     }
