@@ -1,0 +1,136 @@
+/* in part from https://medium.com/@iftimiealexandru/creating-a-resume-using-html-and-css-and-saving-it-as-a-pdf-e85d24b0408e */
+*{
+    --text_color: rgb(0,0,0);
+
+    --background_color: rgb(190, 190, 190);
+    --page_background_color: rgb(255,255,255);
+
+    --banner_background_color: rgb(41, 25, 31);
+    --banner_line_color: rgb(255,255,255);
+    --banner_text_color: rgb(255,255,255);
+
+    font-family: "Trebuchet MS";
+}
+
+body {
+  background: var(--background_color); 
+  width: 21cm;
+  height: 29.7cm;
+  margin: 0 auto;
+}
+page {
+  background: var(--page_background_color);
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 0.5cm;
+  position: relative;
+  color: var(--text_color);
+}
+page[size="A4"] {  
+  width: 21cm;
+  height: 29.7cm; 
+}
+@page {
+  size: 21cm 29.7cm;
+  margin: 0mm;
+}
+.container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+}
+.leftPanel {
+  width: 28%;
+  background-color: var(--banner_background_color);
+  color: var(--banner_text_color);
+  padding: 0.7cm;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.rightPanel {
+  width: 70%;
+  padding: 0.7cm;
+}
+
+.item {
+  padding-bottom: 0.7cm;
+  padding-top: 0.7cm;
+}
+.leftPanel .item
+{
+  padding-bottom: 0.4cm;
+}
+.item h2{
+  margin-top: 0;
+}
+.bottomLineSeparator {
+  border-bottom: 0.05cm solid var(--banner_line_color);
+}
+h2 {
+  font-family: 'Archivo Narrow', sans-serif;
+}
+.leftPanel h2 {
+  color: var(--banner_text_color);
+}
+img {
+  width: 80%;
+  height: auto;
+  margin-bottom: 0.7cm;
+  border-radius: 50%;
+  border: 0.15cm solid var(--banner_line_color);
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+.details {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.leftPanel .smallText, 
+.leftPanel .smallText, 
+.leftPanel .smallText span, 
+.leftPanel .smallText p, 
+.smallText a {
+  font-size: 0.45cm;
+}
+
+.smallText, 
+.smallText span, 
+.smallText p, 
+.smallText a {
+  font-family: 'Source Sans Pro', sans-serif;
+  text-align: justify;
+}
+.contactIcon {
+  width: 0.5cm;
+  text-align: center;
+}
+.leftPanel, 
+.leftPanel a {
+  color: #bebebe;
+  text-decoration: none;
+}
+
+.experience-type
+{
+    font-weight: 700;
+
+}
+.experience-item{
+    padding-bottom: 2rem;
+}
+
+.experience-location{
+    padding-top: 0.8rem;
+    font-weight: 300;
+    padding-bottom: 0.5rem;
+}
+
+.language-list{
+    list-style-position: inside;
+    margin: 0; 
+    padding: 0; 
+}
