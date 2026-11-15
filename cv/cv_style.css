@@ -40,7 +40,6 @@ page {
 page[size="A4"] {  
   width: 21cm;
   height: 29.7cm; 
-
 }
 @page {
   size: 21cm 29.7cm;
@@ -157,8 +156,8 @@ img {
     align-content: center;
     align-items: center;
     margin-left: 15mm;
-    padding-top: 15mm;
-    padding-bottom: 20mm;
+    padding-top: 5mm;
+    padding-bottom: 15mm;
 }
 .about h1{
     color: var(--banner_background_color);
@@ -210,7 +209,7 @@ img {
 
 .info-section{
     color: var(--page_text_color);
-    padding-bottom: 10mm;
+    padding-bottom: 8mm;
 }
 
 .info-section-heading{
@@ -229,7 +228,7 @@ img {
 }
 
 .education-section{
-  border-bottom: 0.6mm solid var(--page_line_color);
+  border-bottom: 0.3mm solid var(--page_line_color);
   
 }
 .education-data{
@@ -248,4 +247,13 @@ img {
     display: inline;
     margin-right: 5mm;
     margin-left: auto;
+}
+.achievement-section{
+    padding-bottom: 2mm;
+    border-bottom: 0.3mm solid var(--page_line_color);
+
+}
+.achievement-type{
+    font-size: medium;
+    font-weight: 700;
 }
