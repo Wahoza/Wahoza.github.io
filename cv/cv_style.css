@@ -1,13 +1,24 @@
 /* in part from https://medium.com/@iftimiealexandru/creating-a-resume-using-html-and-css-and-saving-it-as-a-pdf-e85d24b0408e */
 *{
-    --text_color: rgb(0,0,0);
+    --color_dark: rgb(41, 25, 31);
+    --color_light: rgb(255,255,255);
+    
+    --text_color_light: rgb(189, 189, 189);
+    --text_color_dark: rgb(43, 43, 43);
+
+    --header_color_light: rgb(255,255,255);
+    --header_color_dark: rgb(0,0,0);
 
     --background_color: rgb(190, 190, 190);
-    --page_background_color: rgb(255,255,255);
+    --page_background_color: var(--color_light);
+    --page_line_color: var(--color_dark);
+    --page_text_color: var(--text_color_dark);
 
-    --banner_background_color: rgb(41, 25, 31);
-    --banner_line_color: rgb(255,255,255);
-    --banner_text_color: rgb(255,255,255);
+    --banner_background_color: var(--color_dark);
+    --banner_line_color: var(--color_light);
+    --banner_text_color: var(--text_color_light);
+    
+    -webkit-print-color-adjust: exact;
 
     font-family: "Trebuchet MS";
 }
@@ -29,6 +40,7 @@ page {
 page[size="A4"] {  
   width: 21cm;
   height: 29.7cm; 
+
 }
 @page {
   size: 21cm 29.7cm;
@@ -52,7 +64,10 @@ page[size="A4"] {
 .rightPanel {
   width: 70%;
   padding: 0.7cm;
+  padding-top: 0mm;
+  color: var(--text_color);
 }
+
 
 .item {
   padding-bottom: 0.7cm;
@@ -61,6 +76,7 @@ page[size="A4"] {
 .leftPanel .item
 {
   padding-bottom: 0.4cm;
+  color: var(--text_color_light);
 }
 .item h2{
   margin-top: 0;
@@ -72,7 +88,7 @@ h2 {
   font-family: 'Archivo Narrow', sans-serif;
 }
 .leftPanel h2 {
-  color: var(--banner_text_color);
+  color: var(--header_color_light);
 }
 img {
   width: 80%;
@@ -110,7 +126,7 @@ img {
 }
 .leftPanel, 
 .leftPanel a {
-  color: #bebebe;
+  color: var(--banner_text_color);
   text-decoration: none;
 }
 
@@ -133,4 +149,103 @@ img {
     list-style-position: inside;
     margin: 0; 
     padding: 0; 
+}
+
+.about 
+{
+    align-self: center;
+    align-content: center;
+    align-items: center;
+    margin-left: 15mm;
+    padding-top: 15mm;
+    padding-bottom: 20mm;
+}
+.about h1{
+    color: var(--banner_background_color);
+    font-weight:bolder;
+    font-size: 13mm;
+    margin-bottom: 2mm;
+}
+.about .highlighted-first-name{
+    display: inline;
+
+}
+.about .highlighted-last-name{
+    display: inline;
+    font-weight: 300;
+}
+.about h2
+{
+    color: var(--page_text_color);
+    font-weight: 100;
+    margin-top: 4mm;
+    margin-bottom: 3mm;
+}
+.about .title-line{
+    height: 1mm;
+    width: 15mm;
+    background-color: var(--page_line_color);
+    border-radius: 2mm;
+}
+
+.save-cv-btn{
+    cursor: pointer;
+    border: 1mm solid var(--banner_background_color);
+    border-radius: 5mm;
+    padding: 1mm 2mm;
+    width: fit-content;
+    margin-right: 0;
+    margin-left: auto;
+    pointer-events: all;
+}
+.save-cv-btn:hover{
+    color: var(--header_color_light);
+    background-color: var(--banner_background_color)
+}
+.hidden{
+    display: none;
+}
+
+
+
+.info-section{
+    color: var(--page_text_color);
+    padding-bottom: 10mm;
+}
+
+.info-section-heading{
+    font-weight: 70;
+    font-size: 6mm;
+    border-bottom: 0.8mm solid var(--page_line_color);
+}
+.info-section-content{
+    font-weight: 50;
+    font-size: 3.7mm;
+    padding-bottom: 5mm;
+}
+
+.info-section .info-section-content:nth-child(n+3){
+    padding-top: 8mm;
+}
+
+.education-section{
+  border-bottom: 0.6mm solid var(--page_line_color);
+  
+}
+.education-data{
+    display: flex;
+    padding-bottom: 2mm;
+}
+.education-type{
+    font-size: medium;
+    font-weight: 700;
+}
+.education-location{
+    display: inline;
+
+}
+.education-duration{
+    display: inline;
+    margin-right: 5mm;
+    margin-left: auto;
 }

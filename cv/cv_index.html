@@ -6,11 +6,10 @@
         <title>KilianKolb_CV</title>
         <link rel = "stylesheet" href="cv_style.css">
         <link rel = "stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     </head>
     <body>
-        <page size="A4">
+        <page size="A4" id = "main-page">
           <div class="container">
             <div class="leftPanel">
               <img src="cv_images/CV_Img.jpg"/>
@@ -30,6 +29,12 @@
                         kilianmiko@gmail.com
                       </a>
                     </p>
+                    <p>
+                      <i class="fa-brands fa-itch-io"></i>
+                      <a href="https://wahoza.itch.io">
+                        Wahoza
+                      </a>
+                    </p>
                     <p class="lastParagrafNoMarginBottom">
                       <i class="fa-brands fa-square-linkedin"></i>
                       <a href="https://www.linkedin.com/in/kilian-kolb/">
@@ -38,7 +43,7 @@
                     </p>
                   </div>
                 </div>
-                <div class="item bottomLineSeparator">
+                <!-- <div class="item bottomLineSeparator">
                   <h2>
                     Education
                   </h2>
@@ -67,7 +72,7 @@
                       </div>
                     </div>
                 </div>
-                </div>
+                </div> -->
                 <div class="item bottomLineSeparator">
                   <h2>
                     Skills
@@ -95,8 +100,51 @@
             </div>
             </div>
             <div class="rightPanel">
-            </div>
+                <div class = "about">
+                    <div class = "save-cv-btn" id = "save-cv-btn">Save CV</div>
+                    <h1><div class = "highlighted-first-name">Kilian</div> <div class = "highlighted-last-name">Kolb</div></h1>
+                    <h2>Software & Game Developer</h2>
+                    <div class="title-line"></div>
+                </div>
+                <div class = "info-section">
+                    <h2 class = "info-section-heading">PROFILE</h2>
+                    <div class = "info-section-content text"> I am a BSc computer scientist, completed at the Fachhochschule Salzburg in the course "Multimedia Technology". I frequently develop games and interactive media, while participating in Game Jams or working on private and some larger group projects. 
+                        I am skilled in using Version Control, collaborating in a Team, code dokumentation and software architecture & design. </div>
+                </div>
+                <div class = "info-section">  
+                    <h2 class = "info-section-heading">EDUCATION & EXPERIENCE</h2>
+                    <div class = "info-section-content education-section">
+                        <div class = "education-type">General Education</div>
+                        <div class = "education-data">
+                            <div class = "education-location">Landschulheim-Marquartstein</div>
+                            <div class= "education-duration">2014 - 2022</div>
+                        </div>
+                        <div class = "education-info"></div>
+                    </div>
+                    <div class = "info-section-content education-section">
+                        <div class = "education-type">Bachelor of Science</div>
+                        <div class = "education-data">
+                            <div class = "education-location">Fachhochschule Salzburg</div>
+                            <div class= "education-duration">2022 - 2026</div>
+                        </div>
+                        <div class = "education-info">Broad scope of development cycles, and working on interactive multimedial experiences.</div>
+                    </div>
+                    <div class = "info-section-content education-section">
+                        <div class = "education-type">Internship as Technical Artist & Game Developer</div>
+                        <div class = "education-data">
+                            <div class = "education-location">Nightingames</div>
+                            <div class= "education-duration">08.2025 - 12.2025</div>
+                        </div>
+                        <div class = "education-info">Work on multiple games (credited to Loxia Herbs and Potions, The Legend of Khiimori) and prototypes, using Unreal Engine and Unity, learning about team structures and participation in regular meetings.</div>
+                    </div>
+                </div>
+                <!-- <div class = "info-section">
+                    <h2 class = "info-section-heading">SKILLS</h2>
+                    <div class = "info-section-content bordered-item-box"> <div class = "bordered-item">skill a</div><div class = "bordered-item">skill a</div><div class = "bordered-item">skill a</div><div class = "bordered-item">skill a</div><div class = "bordered-item">skill a</div>
+                </div> -->
+          </div>
           </div>
         </page>
+    <script src = "cv_download.js" defer></script>
     </body>
 </html>
