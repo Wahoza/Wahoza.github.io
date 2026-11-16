@@ -160,7 +160,7 @@ img {
     align-content: center;
     align-items: center;
     margin-left: 15mm;
-    padding-top: 5mm;
+    padding-top: 2mm;
     padding-bottom: 15mm;
 }
 .about h1{
@@ -261,7 +261,11 @@ img {
     font-size: medium;
     font-weight: 700;
 }
-
+.achievement-link a {
+    color: var(--page_text_color);
+    text-decoration: none;
+    line-break: anywhere;
+}
 .projects-container{
     padding-left: 7mm;
     padding-right: 7mm;
