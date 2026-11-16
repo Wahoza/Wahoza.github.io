@@ -9,7 +9,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     </head>
     <body>
-        <page size="A4" id = "main-page">
+        <page size="A4">
           <div class="container">
             <div class="leftPanel">
               <img src="cv_images/CV_Img.jpg"/>
@@ -25,14 +25,8 @@
                     </p>
                     <p>
                       <i class="fa fa-envelope contactIcon" aria-hidden="true"></i>
-                      <a href="kilianmiko@gmail.com">
+                      <a href="mailto:kilianmiko@gmail.com">
                         kilianmiko@gmail.com
-                      </a>
-                    </p>
-                    <p>
-                      <i class="fa-brands fa-itch-io"></i>
-                      <a href="https://wahoza.itch.io">
-                        Wahoza
                       </a>
                     </p>
                     <p class="lastParagrafNoMarginBottom">
@@ -43,6 +37,7 @@
                     </p>
                   </div>
                 </div>
+
                 <!-- <div class="item bottomLineSeparator">
                   <h2>
                     Education
@@ -75,13 +70,13 @@
                 </div> -->
                 <div class="item bottomLineSeparator">
                   <h2>
-                    Skills
+                    SKILLS
                   </h2>
                   <p>C# &#8226; C++ &#8226; JS &#8226; OOP &#8226; Unity (& Shadergraph)&#8226; Unreal Engine &#8226; Version Control &#8226; Godot &#8226; Game Design &#8226; Software Design </p>
                 </div>
-                <div class="item">
+                <div class="item bottomLineSeparator">
                   <h2>
-                    Languages
+                    LANGUAGES
                   </h2>
                   <ul class = "language-list">
                     <li>
@@ -96,6 +91,31 @@
                         French (B2)
                     </li>
                 </ul>
+                </div>
+             <div class="item">
+                  <h2>
+                    LINKS
+                  </h2>
+                  <div class="smallText">
+                    <p>
+                    <i class="fa-solid fa-globe"></i>
+                      <a href="https://wahoza.github.io">
+                        wahoza.github.io
+                      </a>
+                    </p>
+                    <p>
+                      <i class="fa-brands fa-itch-io"></i>
+                      <a href="https://wahoza.itch.io">
+                        Wahoza
+                      </a>
+                    </p>
+                    <p>
+                      <i class="fa-brands fa-github"></i>
+                      <a href="https://github.com/Wahoza">
+                        github.com/Wahoza
+                      </a>
+                    </p>
+                  </div>
                 </div>
             </div>
             </div>
@@ -142,7 +162,7 @@
                     <h2 class = "info-section-heading">ACHIEVEMENTS</h2>
                     <div class = "info-section-content achievement-section">
                         <div class = "achievement-type">Runner-up in the Subotron Pitch Competition</div>
-                        <div class = "achievement-info">Entry with "Train of Thought - Murder on the Silver Line"</div>
+                        <div class = "achievement-info">Entry with "Train of Thought - Murder on the Silver Line", ongoing competition</div>
                     </div>
                     <div class = "info-section-content achievement-section">
                         <div class = "achievement-type">Winner at the Truth, Lies and Democracy Gamejam in the Vienna Belvedere</div>
@@ -156,6 +176,12 @@
           </div>
           </div>
         </page>
+        <page size = "A4-auto-size">
+            <div class = "projects-container" id = "projects-container">
+                <h2 class = "info-section-heading">PROJECTS</h2>
+            </div>
+        </page>
     <script src = "cv_download.js" defer></script>
+    <script src = "cv_load-projects.js" defer></script>
     </body>
 </html>

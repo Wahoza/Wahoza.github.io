@@ -1,5 +1,4 @@
 const downloadBtn = document.getElementById('save-cv-btn');
-const page = document.getElementById('main-page');
 downloadBtn.addEventListener("click", () => {
     SaveAsPdf();
 })

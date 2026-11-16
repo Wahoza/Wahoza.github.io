@@ -41,6 +41,10 @@ page[size="A4"] {
   width: 21cm;
   height: 29.7cm; 
 }
+page[size="A4-auto-size"] {  
+  width: 21cm;
+  height: fit-content; 
+}
 @page {
   size: 21cm 29.7cm;
   margin: 0mm;
@@ -256,4 +260,82 @@ img {
 .achievement-type{
     font-size: medium;
     font-weight: 700;
+}
+
+.projects-container{
+    padding-left: 7mm;
+    padding-right: 7mm;
+    padding-top: 10mm;
+    padding-bottom: 20mm;
+}
+
+.project-item{
+    break-after: auto;
+    break-inside: avoid-page;
+
+    padding-top: 10mm;
+    
+    border-bottom: 0.8mm solid var(--page_line_color);
+
+    font-weight: 50;
+    font-size: 3.7mm;
+}
+
+.project-titlecard{
+    display: flex;
+    flex-direction: row;
+    border-bottom: 0.3mm solid var(--page_line_color);
+    padding-bottom: 2mm;
+    margin-bottom: 3mm;
+}
+.project-title{
+    font-size: medium;
+    font-weight: 700;
+}
+.project-duration{
+    margin-right: 5mm;
+    margin-left: auto;
+    align-self: flex-end;
+}
+.project-description{
+    padding-bottom: 3mm;
+}
+.project-task-container,
+.project-made-with-container
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.project-task-heading,
+.project-made-with-heading
+{
+    font-weight: 700;
+}
+.project-task-item,
+.project-made-with-item
+{
+    border-right:  0.3mm solid var(--page_line_color);
+    padding-right: 5mm;
+    padding-left: 5mm;
+    margin-top: 3mm;
+    margin-bottom: 3mm;
+    width: max-content;
+}
+
+.project-task-item:nth-last-child(1),
+.project-made-with-item:nth-last-child(1){
+    border-right: none;
+}
+
+.project-link-container{
+    margin-top: 5mm;
+    display: flex;
+    flex-direction: row;
+    gap: 5mm;
+}
+.project-link-container a{
+    color: var(--page_text_color);
+    text-decoration: none;
+    padding-bottom: 3mm;
 }
