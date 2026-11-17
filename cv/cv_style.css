@@ -18,6 +18,7 @@
     --banner_line_color: var(--color_light);
     --banner_text_color: var(--text_color_light);
     
+    print-color-adjust: exact;
     -webkit-print-color-adjust: exact;
 
     font-family: "Trebuchet MS";
