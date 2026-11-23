@@ -125,7 +125,7 @@ cv_projects.push(
 var stringToAdd = ''
 
 for(let i = 0; i < cv_projects.length; i++){
-    stringToAdd += '<div class = "project-item">'
+    stringToAdd += '<div class = "project-item cv_only">'
     stringToAdd += (
         '<div class = "project-titlecard"> <div class = "project-title">' + cv_projects[i].name + '</div>' +
         '<div class = "project-duration"> ' + cv_projects[i].duration +'</div></div>' + 

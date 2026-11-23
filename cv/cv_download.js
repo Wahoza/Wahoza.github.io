@@ -1,27 +1,51 @@
 const downloadBtn = document.getElementById('save-cv-btn');
+const resumeBtn = document.getElementById('save-resume-btn');
+
 downloadBtn.addEventListener("click", () => {
-    SaveAsPdf();
+    SaveAsCVPdf();
 })
+resumeBtn.addEventListener("click", () => {
+    SaveAsResumePdf();
+})
+function SaveAsCVPdf(){
+    document.title = ("KilianKolb_CV" + new Date().getFullYear());
 
-function SaveAsPdf(){
-    // var opt = {
-    //   margin:       [0,-1],
-    //   filename:     'test.pdf',
-    //   image:        { type: 'pdf', quality: 0.98 },
-    //   html2canvas:  { scale: 2 },
-    //   jsPDF:        { unit: 'in', format: 'A4', orientation: 'portrait' },
-    //   pagebreak: { mode: 'avoid-all'}
-    // };
-
-    // // New Promise-based usage:
+    let resumeOnlyElements = document.getElementsByClassName("resume_only");
     
     downloadBtn.classList.add('hidden');
+    resumeBtn.classList.add('hidden');
 
-    // html2pdf().set(opt).from(page).save();
-    
-    // setTimeout(function () {
-    //     downloadBtn.classList.remove('hidden');
-    // }, 1);
+    for(var i = 0; i < resumeOnlyElements.length; i++){
+        resumeOnlyElements[i].classList.add('hidden');
+    }
+
     window.print();
+
+    for(var i = 0; i < resumeOnlyElements.length; i++){
+        resumeOnlyElements[i].classList.remove('hidden');
+    }
     downloadBtn.classList.remove('hidden');
+    resumeBtn.classList.remove('hidden');
+}
+
+function SaveAsResumePdf(){
+    document.title = ("KilianKolb_Resume" + new Date().getFullYear());
+
+    let cvOnlyElements = document.getElementsByClassName("cv_only");
+    
+    downloadBtn.classList.add('hidden');
+    resumeBtn.classList.add('hidden');
+
+    for(var i = 0; i < cvOnlyElements.length; i++){
+        cvOnlyElements[i].classList.add('hidden');
+    }
+
+    window.print();
+
+    for(var i = 0; i < cvOnlyElements.length; i++){
+        cvOnlyElements[i].classList.remove('hidden');
+    }
+    downloadBtn.classList.remove('hidden');
+    resumeBtn.classList.remove('hidden');
+
 }

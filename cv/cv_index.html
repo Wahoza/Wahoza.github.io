@@ -120,11 +120,13 @@
             <div class="rightPanel">
                 <div class = "about">
                     <div class = "save-cv-btn" id = "save-cv-btn">Save CV</div>
+                    <div class = "save-cv-btn" id = "save-resume-btn">Save Resume</div>
+
                     <h1><div class = "highlighted-first-name">Kilian</div> <div class = "highlighted-last-name">Kolb</div></h1>
                     <h2>Software & Game Developer</h2>
                     <div class="title-line"></div>
                 </div>
-                <div class = "info-section">
+                <div class = "info-section cv_only">
                     <h2 class = "info-section-heading">PROFILE</h2>
                     <div class = "info-section-content text"> I am a BSc computer scientist, completed at the Fachhochschule Salzburg in the course "Multimedia Technology". I frequently develop games and interactive media, while participating in Game Jams or working on private and some larger group projects. 
                         I am skilled in using version control tools, collaborating in a team, code documentation and software architecture & design. </div>
@@ -176,9 +178,9 @@
           </div>
           </div>
         </page>
-        <page size = "A4-auto-size">
-            <div class = "projects-container" id = "projects-container">
-                <h2 class = "info-section-heading">PROJECTS</h2>
+        <page size = "A4-auto-size" class = "cv_only">
+            <div class = "projects-container cv_only" id = "projects-container">
+                <h2 class = "info-section-heading cv_only">PROJECTS</h2>
             </div>
         </page>
     <script src = "cv_download.js" defer></script>
