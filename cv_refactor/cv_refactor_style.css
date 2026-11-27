@@ -138,14 +138,10 @@ img {
     padding-bottom: 0.5rem;
 }
 
-.language-list{
-    list-style-position: inside;
-    margin: 0; 
-    padding: 0; 
-}
-.language-list ul::marker{
-    padding: 0;
-    margin-right: 0;
+.grid-subdivision{
+    display: grid;
+    grid-template-columns: auto 2fr;
+    gap: 2mm;
 }
 
 .about-container{
@@ -260,22 +256,27 @@ img {
     padding-bottom: 5mm;
     display: grid;
     grid-template-columns: 1fr 3fr;
-    gap: 5mm
+    gap: 5mm;
+        border-bottom: 0.3mm solid var(--page_line_color);
+
 }
 
 .info-section .info-section-content:nth-child(n+3){
     padding-top: 8mm;
 }
 
-.education-section{
-  border-bottom: 0.3mm solid var(--page_line_color);
-  
+
+.grid-item-left{
+
+    display: inline;
+    margin-right: 5mm;
+    margin-left: auto;
 }
-.education-data{
+
+.grid-item-right{
     display: flex;
     flex-direction: column;
-    padding-bottom: 2mm;
-    gap: 2mm
+    gap: 2mm;
 }
 .education-type{
     font-size: medium;
@@ -285,11 +286,7 @@ img {
     display: inline;
 
 }
-.education-duration{
-    display: inline;
-    margin-right: 5mm;
-    margin-left: auto;
-}
+
 .achievement-section{
     padding-bottom: 2mm;
     border-bottom: 0.3mm solid var(--page_line_color);
